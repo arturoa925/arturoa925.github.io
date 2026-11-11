@@ -1,0 +1,45 @@
+import Foundation
+import Ignite
+
+@main
+struct PortfolioWebsite {
+    static func main() async {
+        var site = PortfolioSite()
+
+        do {
+            try await site.publish()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+struct PortfolioSite: Site {
+    var name = "Arturo Ayala"
+    var titleSuffix = " · Arturo Ayala"
+    var description: String? = "Software developer building native iOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React."
+    var url = URL(static: "https://arturoa925.github.io")
+    var author = "Arturo Ayala"
+    var timeZone: TimeZone? = TimeZone(identifier: "America/Los_Angeles")
+
+    var builtInIconsEnabled: BootstrapOptions = .localBootstrap
+    var syntaxHighlighterConfiguration: SyntaxHighlighterConfiguration = .init(languages: [.swift, .javaScript, .bash])
+
+    var lightTheme: (any Theme)? = PortfolioLightTheme()
+    var darkTheme: (any Theme)? = PortfolioDarkTheme()
+
+    var homePage = Home()
+    var layout = MainLayout()
+
+    var staticPages: [any StaticPage] {
+        Projects()
+        Writing()
+        Resume()
+        About()
+    }
+
+    var articlePages: [any ArticlePage] {
+        PostPage()
+        ProjectPage()
+    }
+}

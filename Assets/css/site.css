@@ -1,0 +1,7 @@
+/* Keep wide content (tables, code, diagrams) inside the screen on phones. */
+main table, .container table { display: block; overflow-x: auto; max-width: 100%; }
+pre { overflow-x: auto; max-width: 100%; }
+body { overflow-wrap: anywhere; }
+pre, code { overflow-wrap: normal; }
+.card { height: 100%; }
+li > p { margin-bottom: 0.35rem; }
