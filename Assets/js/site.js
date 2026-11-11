@@ -4,8 +4,10 @@
     // ── 1. The headline types itself out. Click it to watch it again. ──
     var headline = document.querySelector(".hero h1");
     if (headline) {
-        var fullText = headline.textContent.trim();
-        headline.setAttribute("aria-label", fullText);
+        var spoken = headline.textContent.trim();
+        headline.setAttribute("aria-label", spoken);
+        // One short sentence per line.
+        var fullText = spoken.replace(/\. /g, ".\n");
         // An invisible copy of the full line holds the space, so the page
         // doesn't jump while the visible layer types over it.
         headline.innerHTML = '<span class="ghost" aria-hidden="true"></span>' +
@@ -25,7 +27,8 @@
                 if (i++ < fullText.length) {
                     // a touch of human rhythm: pause a little longer after spaces
                     var ch = fullText.charAt(i - 1);
-                    timer = setTimeout(next, ch === " " ? 70 : 28 + Math.random() * 30);
+                    var delay = ch === "\n" ? 380 : ch === " " ? 70 : 32 + Math.random() * 34;
+                    timer = setTimeout(next, delay);
                 } else {
                     headline.classList.remove("is-typing");
                 }
@@ -40,8 +43,17 @@
     var brand = document.querySelector(".site-nav .brand");
     if (brand) {
         var name = brand.textContent;
-        brand.innerHTML = '<span class="main"></span><span class="alt" aria-hidden="true">hola, I’m Arturo</span>';
+        brand.innerHTML = '<span class="main"></span><span class="alt" aria-hidden="true">hola, soy Arturo</span>';
         brand.querySelector(".main").textContent = name;
+
+        // Phones have no hover, so on touch screens the name says hola once,
+        // right after the headline finishes typing.
+        if (window.matchMedia("(hover: none)").matches && !reduceMotion) {
+            setTimeout(function () {
+                brand.classList.add("say-hola");
+                setTimeout(function () { brand.classList.remove("say-hola"); }, 2200);
+            }, 3200);
+        }
     }
 
     // ── 3. Email links copy the address as well as opening the mail app ──

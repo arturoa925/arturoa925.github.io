@@ -88,7 +88,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--swift); outline
     line-height: 1.02;
     letter-spacing: -0.045em;
     margin-bottom: 1.5rem;
-    max-width: 14ch;
+    max-width: none;
 }
 .hero h1::after {
     content: "";
@@ -213,14 +213,19 @@ body > .pb-5 { padding-bottom: 0 !important; }
 .site-nav .brand { position: relative; display: inline-block; }
 .site-nav .brand .alt { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(6px); transition: opacity .2s, transform .2s; color: var(--swift); white-space: nowrap; }
 .site-nav .brand .main { display: inline-block; transition: opacity .2s, transform .2s; }
-.site-nav .brand:hover .main, .site-nav .brand:focus-visible .main { opacity: 0; transform: translateY(-6px); }
-.site-nav .brand:hover .alt, .site-nav .brand:focus-visible .alt { opacity: 1; transform: none; }
+.site-nav .brand.say-hola .main, .site-nav .brand:focus-visible .main { opacity: 0; transform: translateY(-6px); }
+.site-nav .brand.say-hola .alt, .site-nav .brand:focus-visible .alt { opacity: 1; transform: none; }
+@media (hover: hover) {
+    .site-nav .brand:hover .main { opacity: 0; transform: translateY(-6px); }
+    .site-nav .brand:hover .alt { opacity: 1; transform: none; }
+}
 
 /* Typed headline */
-.hero h1 { cursor: text; }
+.hero h1 { cursor: text; -webkit-tap-highlight-color: transparent; }
 .hero h1.has-typing { position: relative; }
 .hero h1.has-typing::after { display: none; }
 .hero h1 .ghost { visibility: hidden; }
+.hero h1 .ghost, .hero h1 .typed { white-space: pre-line; }
 .hero h1 .type-layer { position: absolute; inset: 0; }
 .hero h1 .caret {
     display: inline-block; width: 0.09em; height: 0.82em; margin-left: 0.08em;
@@ -233,7 +238,8 @@ body > .pb-5 { padding-bottom: 0 !important; }
 /* Rows: a soft glass highlight on hover */
 .entry { position: relative; transition: background-color .2s; }
 .entry::before { content: ""; position: absolute; inset: 0 -14px; border-radius: 12px; background: rgba(21, 23, 28, 0.035); opacity: 0; transition: opacity .2s; pointer-events: none; }
-.entry:hover::before { opacity: 1; }
+@media (hover: hover) { .entry:hover::before { opacity: 1; } }
+.entry:active::before { opacity: 1; }
 
 /* Code blocks get a copy button on hover */
 pre { position: relative; }

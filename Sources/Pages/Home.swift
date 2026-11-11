@@ -9,7 +9,7 @@ struct Home: StaticPage {
 
     var body: some HTML {
         Section {
-            Text("Build software that feels obvious in hindsight and lasts by design.")
+            Text("Natural in hand. Obvious to use. Built to last.")
                 .font(.title1)
 
             Text("I'm Arturo. I build native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React.")
