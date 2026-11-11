@@ -9,12 +9,7 @@ struct MainLayout: Layout {
 
         Body {
             NavBar()
-                .padding(.bottom, .xLarge)
-
             content
-                .padding(.horizontal, .medium)
-                .padding(.top, 80)
-
             SiteFooter()
         }
     }

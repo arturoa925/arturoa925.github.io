@@ -8,17 +8,20 @@ struct Projects: StaticPage {
     @Environment(\.articles) var articles
 
     var body: some HTML {
-        Text("Projects")
-            .font(.title1)
+        Section {
+            Text("Projects")
+                .font(.title1)
 
-        Text("Each case study covers what the app does, how it's built, and why I made the design and code choices I did.")
-            .font(.lead)
-            .foregroundStyle(.secondary)
-            .margin(.bottom, .large)
-
-        Grid(articles.typed("projects").sorted { $0.order < $1.order }, alignment: .top, spacing: .large) { project in
-            ProjectCard(project: project)
+            Text("What each app does, how it's built, and why I made the design and code choices I did.")
+                .class("lead")
         }
-        .columns(2)
+        .class("page-head")
+
+        Section {
+            ForEach(articles.typed("projects").sorted { $0.order < $1.order }) { project in
+                ProjectRow(project: project)
+            }
+        }
+        .class("row-list")
     }
 }

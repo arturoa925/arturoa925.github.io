@@ -1,9 +1,10 @@
 ---
 layout: ProjectPage
 order: 2
+platform: iOS + watchOS
 date: 2026-10-20
 subtitle: Build strength routines on iPhone, run them set by set on Apple Watch, and review every session in your history.
-stack: Swift · SwiftUI · SwiftData · WatchConnectivity · watchOS · Swift Testing
+stack: Swift, SwiftUI, SwiftData, WatchConnectivity, watchOS, Swift Testing
 repo: https://github.com/arturoa925/Axis
 tags: iOS, watchOS, Swift
 ---

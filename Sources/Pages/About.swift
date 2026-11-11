@@ -10,20 +10,31 @@ struct About: StaticPage {
             Text("About")
                 .font(.title1)
 
-            Text("I build native iOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React. My focus is state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
-                .font(.lead)
+            Text("I build native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React. My focus is state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
+                .class("lead")
+        }
+        .class("page-head")
 
-            Text(markdown: "**Recent work:** a Siri-driven daily planner built on App Intents and SwiftData, an iPhone and Apple Watch strength tracker synced with WatchConnectivity, a street-level map experience that reacts to weather and time of day, and a full-stack React Native training app with its own Node.js and PostgreSQL backend.")
+        Section {
+            Text("Recent work")
+                .font(.title3)
+            Text("A Siri-driven daily planner built on App Intents and SwiftData. An iPhone and Apple Watch strength tracker synced with WatchConnectivity. A street-level map that reacts to weather and time of day. A full-stack React Native training app with its own Node.js and PostgreSQL backend.")
 
-            Text(markdown: "**How I work:** I map screens and data flow before I write code, trace problems by hand, and test on real devices in real conditions.")
+            Text("How I work")
+                .font(.title3)
+            Text("I map screens and data flow before I write code, trace problems by hand, and test on real devices in real conditions.")
 
-            Text(markdown: "**Stack:** Swift · SwiftUI · SwiftData · App Intents · watchOS · Swift Concurrency · TypeScript · JavaScript · React · React Native/Expo · Node.js · Express · PostgreSQL · Git")
+            Text("Stack")
+                .font(.title3)
+            Text("Swift, SwiftUI, SwiftData, App Intents, watchOS, Swift Concurrency, TypeScript, JavaScript, React, React Native, Expo, Node.js, Express, PostgreSQL, Git.")
 
-            Text(markdown: "**Background:** Technical Specialist at Apple. UC Berkeley Full Stack Bootcamp (2024). Bilingual in English and Spanish.")
+            Text("Background")
+                .font(.title3)
+            Text("Technical Specialist at Apple. UC Berkeley Full Stack Web Development Bootcamp, 2024. Bilingual in English and Spanish.")
 
-            Text(markdown: "[See my résumé](/resume) · [GitHub](https://github.com/arturoa925) · [LinkedIn](https://www.linkedin.com/in/arturo-ayala-775493187) · [Email](mailto:ayalaarturo925@gmail.com)")
+            Text(markdown: "[Résumé](/resume), [GitHub](https://github.com/arturoa925), [LinkedIn](https://www.linkedin.com/in/arturo-ayala-775493187), [Email](mailto:ayalaarturo925@gmail.com)")
                 .margin(.top, .large)
         }
-        .frame(maxWidth: 760)
+        .class("prose")
     }
 }

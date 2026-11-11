@@ -115,84 +115,76 @@ struct Resume: StaticPage {
 
     var body: some HTML {
         Section {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Arturo Ayala")
-                        .font(.title1)
-                    Text("Software Developer — iOS & Full-Stack · San Francisco Bay Area")
-                        .font(.lead)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer()
-
-                Link("Download PDF", target: Self.pdfPath)
-                    .linkStyle(.button)
-                    .role(.primary)
-                    .target(.blank)
+            Section {
+                Text("Résumé")
+                    .font(.title1)
+                Text("Software developer, iOS and full-stack. San Francisco Bay Area.")
+                    .class("lead")
             }
 
-            Text(markdown: "[ayalaarturo925@gmail.com](mailto:ayalaarturo925@gmail.com) · [GitHub](https://github.com/arturoa925) · [LinkedIn](https://www.linkedin.com/in/arturo-ayala-775493187)")
-                .margin(.top, .small)
+            Link("Download PDF", target: Self.pdfPath)
+                .linkStyle(.button)
+                .role(.primary)
+                .target(.blank)
+        }
+        .class("resume-head")
+
+        Section {
+            Text(markdown: "[ayalaarturo925@gmail.com](mailto:ayalaarturo925@gmail.com), [GitHub](https://github.com/arturoa925), [LinkedIn](https://www.linkedin.com/in/arturo-ayala-775493187)")
+                .class("meta")
 
             Text("Software developer who builds native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in TypeScript, React and React Native. Focused on state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
-                .margin(.top, .large)
+                .margin(.top, .medium)
 
-            heading("Technical Skills")
-            List {
+            Text("Technical skills")
+                .font(.title2)
+            Section {
                 ForEach(skills) { skill in
                     Text(markdown: "**\(skill.0):** \(skill.1)")
                 }
             }
-            .listMarkerStyle(.unordered(.automatic))
+            .class("skills")
 
-            heading("Projects")
+            Text("Projects")
+                .font(.title2)
             ForEach(projects) { entry in
                 entryView(entry)
             }
 
-            heading("Experience")
+            Text("Experience")
+                .font(.title2)
             ForEach(experience) { entry in
                 entryView(entry)
             }
 
-            heading("Education & Certifications")
-            List {
-                ForEach(education) { line in
-                    Text(line)
-                }
+            Text("Education and certifications")
+                .font(.title2)
+            List(education) { line in
+                ListItem { line }
             }
             .listMarkerStyle(.unordered(.automatic))
         }
-        .frame(maxWidth: 860)
-    }
-
-    private func heading(_ text: String) -> some HTML {
-        Text(text)
-            .font(.title3)
-            .margin(.top, .xLarge)
+        .class("resume")
+        .margin(.bottom, .xLarge)
     }
 
     private func entryView(_ entry: ResumeEntry) -> some HTML {
         Section {
             Text {
                 Strong(entry.title)
-                " — \(entry.detail)"
+                Span(entry.dates)
+                    .class("when")
             }
-            .margin(.bottom, .none)
+            .class("job-head")
 
-            Text(entry.dates)
-                .font(.small)
-                .foregroundStyle(.secondary)
-                .margin(.bottom, .small)
+            Text(entry.detail)
+                .class("job-detail")
 
-            List {
-                ForEach(entry.bullets) { bullet in
-                    Text(bullet)
-                }
+            List(entry.bullets) { bullet in
+                ListItem { bullet }
             }
             .listMarkerStyle(.unordered(.automatic))
         }
-        .margin(.top, .medium)
+        .class("job")
     }
 }

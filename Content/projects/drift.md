@@ -1,9 +1,10 @@
 ---
 layout: ProjectPage
 order: 4
+platform: iOS, in progress
 date: 2026-10-13
-subtitle: A street-level map experience that reacts to the weather, the time of day and how you're moving. In progress.
-stack: Swift · SwiftUI Canvas · Core Location · CoreMotion · Open-Meteo · OpenStreetMap
+subtitle: A street-level map experience that reacts to the weather, the time of day and how you're moving.
+stack: Swift, SwiftUI Canvas, Core Location, CoreMotion, Open-Meteo, OpenStreetMap
 repo: https://github.com/arturoa925/Drift
 tags: iOS, Swift, Design
 ---

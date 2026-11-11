@@ -10,9 +10,14 @@ extension Article {
         return Int.max
     }
 
-    /// A short stack line from front matter, e.g. "Swift · SwiftUI · SwiftData".
+    /// A short stack line from front matter, e.g. "Swift, SwiftUI, SwiftData".
     var stack: String? {
         metadata["stack"] as? String
+    }
+
+    /// Where the project runs, shown on the right of its row: "iOS", "Full-stack"…
+    var platform: String? {
+        metadata["platform"] as? String
     }
 
     /// Front-matter `description` wins over Ignite's auto-generated first paragraph.
@@ -25,52 +30,49 @@ extension Article {
     }
 }
 
-struct ProjectCard: HTML {
+/// One project in the index: name, one line, stack. Platform on the right.
+struct ProjectRow: HTML {
     let project: Article
 
     var body: some HTML {
-        Card {
-            Text(project.subtitle ?? project.description)
+        Section {
+            Text {
+                Link(project.title, target: project.path)
+                    .class("entry-title")
+            }
+
+            Text(project.platform ?? "")
+                .class("entry-side")
+
+            Text(project.subtitle ?? project.summary)
+                .class("entry-summary")
 
             if let stack = project.stack {
                 Text(stack)
-                    .font(.small)
-                    .foregroundStyle(.secondary)
+                    .class("entry-meta")
             }
-
-            Link("Read the case study →", target: project.path)
-        } header: {
-            Text(project.title)
-                .font(.title4)
-                .fontWeight(.semibold)
         }
-        .frame(height: .percent(100%))
+        .class("entry")
     }
 }
 
+/// One post in the index: title and date on one line, summary under it.
 struct PostRow: HTML {
     let post: Article
 
     var body: some HTML {
         Section {
-            Link(post.title, target: post.path)
-                .font(.title5)
-                .fontWeight(.semibold)
+            Text {
+                Link(post.title, target: post.path)
+                    .class("entry-title")
+            }
+
+            Text(post.displayDate)
+                .class("entry-side")
 
             Text(post.summary)
-                .foregroundStyle(.secondary)
-                .margin(.vertical, .xSmall)
-
-            Text {
-                post.displayDate
-                " · \(post.estimatedReadingMinutes) min read"
-                if let tags = post.tags, tags.isEmpty == false {
-                    " · " + tags.joined(separator: ", ")
-                }
-            }
-            .font(.small)
-            .foregroundStyle(.tertiary)
+                .class("entry-summary")
         }
-        .padding(.vertical, .medium)
+        .class("entry")
     }
 }

@@ -1,9 +1,10 @@
 ---
 layout: ProjectPage
 order: 1
+platform: iOS
 date: 2026-11-01
 subtitle: A focused daily planner for iPhone that you can drive from Siri, Shortcuts and your notifications.
-stack: Swift · SwiftUI · SwiftData · App Intents · UserNotifications · Swift Concurrency · Swift Testing · XCUITest
+stack: Swift, SwiftUI, SwiftData, App Intents, UserNotifications, Swift Concurrency, Swift Testing, XCUITest
 repo: https://github.com/arturoa925/Daily-Protocol
 tags: iOS, Swift
 ---

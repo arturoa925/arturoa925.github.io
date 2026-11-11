@@ -8,18 +8,15 @@ struct Home: StaticPage {
     @Environment(\.articles) var articles
 
     var body: some HTML {
-        // Hero
         Section {
             Text("Build software that feels obvious in hindsight and lasts by design.")
                 .font(.title1)
-                .fontWeight(.bold)
 
-            Text("I'm Arturo, a software developer building native iOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React.")
-                .font(.lead)
-                .foregroundStyle(.secondary)
+            Text("I'm Arturo. I build native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React.")
+                .class("lead")
 
-            HStack {
-                Link("View projects", target: Projects())
+            Section {
+                Link("See my work", target: Projects())
                     .linkStyle(.button)
                     .role(.primary)
 
@@ -28,31 +25,36 @@ struct Home: StaticPage {
                     .role(.secondary)
                     .target(.blank)
             }
-            .margin(.top, .medium)
+            .class("actions")
         }
-        .padding(.bottom, .large)
+        .class("hero")
 
-        // Featured projects
-        Text("Projects")
-            .font(.title2)
-            .margin(.top, .large)
+        Text("Selected work")
+            .class("section-title")
 
-        Grid(projects, alignment: .top, spacing: .large) { project in
-            ProjectCard(project: project)
+        Section {
+            ForEach(projects) { project in
+                ProjectRow(project: project)
+            }
         }
-        .columns(2)
+        .class("row-list")
 
-        // Latest writing
-        Text("Latest writing")
-            .font(.title2)
-            .margin(.top, .xLarge)
+        Text("Writing")
+            .class("section-title")
 
-        ForEach(latestPosts) { post in
-            PostRow(post: post)
+        Section {
+            ForEach(latestPosts) { post in
+                PostRow(post: post)
+            }
         }
+        .class("row-list")
+        .margin(.bottom, .small)
 
-        Link("All writing →", target: Writing())
-            .margin(.top, .medium)
+        Text {
+            Link("All writing", target: Writing())
+                .class("more-link")
+        }
+        .margin(.bottom, .xLarge)
     }
 
     private var projects: [Article] {
@@ -60,6 +62,6 @@ struct Home: StaticPage {
     }
 
     private var latestPosts: [Article] {
-        Array(articles.typed("writing").sorted { $0.date > $1.date }.prefix(3))
+        Array(articles.typed("writing").sorted { $0.date > $1.date }.prefix(4))
     }
 }
