@@ -10,8 +10,9 @@ struct ResumeEntry {
 }
 
 struct Resume: StaticPage {
-    var title = "Résumé"
+    var title = "Résumé | Arturo Ayala"
     var description = "Arturo Ayala's résumé: iOS and full-stack software developer."
+    var image: URL? = PortfolioSite.shareImage
 
     static let pdfPath = "/files/arturo-ayala-resume.pdf"
 

@@ -2,8 +2,9 @@ import Foundation
 import Ignite
 
 struct About: StaticPage {
-    var title = "About"
+    var title = "About | Arturo Ayala"
     var description = "About Arturo Ayala, software developer."
+    var image: URL? = PortfolioSite.shareImage
 
     var body: some HTML {
         Section {

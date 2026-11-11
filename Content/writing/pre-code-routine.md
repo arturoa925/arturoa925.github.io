@@ -1,4 +1,5 @@
 ---
+image: https://arturoa925.github.io/images/og.png
 layout: PostPage
 date: 2026-11-03 09:00
 tags: DSA, Swift, Process

@@ -2,8 +2,9 @@ import Foundation
 import Ignite
 
 struct Projects: StaticPage {
-    var title = "Projects"
+    var title = "Projects | Arturo Ayala"
     var description = "Case studies of the iOS, watchOS and full-stack apps I've designed and built."
+    var image: URL? = PortfolioSite.shareImage
 
     @Environment(\.articles) var articles
 

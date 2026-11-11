@@ -1,4 +1,5 @@
 ---
+image: https://arturoa925.github.io/images/og.png
 layout: PostPage
 date: 2026-11-02 09:00
 tags: Full-stack, Swift, Process

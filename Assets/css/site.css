@@ -263,3 +263,45 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
     .site-nav { padding-top: 12px; padding-bottom: 12px; row-gap: 6px; }
     .site-nav .links { font-size: 0.9rem; }
 }
+
+/* ──────────────────────────────────────────────────────────────
+   Dark mode: same structure, inverted tokens. Follows the visitor's
+   system setting. Text stays above 7:1 contrast on the background.
+   ────────────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper: #101114;
+        --ink: #ECEDEF;
+        --graphite: #A9AEB9;
+        --mist: #7D828E;
+        --hairline: #26282E;
+        --wash: #18191D;
+        --bs-link-color-rgb: 236, 237, 239;
+        color-scheme: dark;
+    }
+
+    .site-nav {
+        background: rgba(16, 17, 20, 0.72);
+        border-bottom-color: rgba(236, 237, 239, 0.07);
+    }
+
+    .btn-primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+    .btn-primary:hover, .btn-primary:focus { background: #D3D5DA; border-color: #D3D5DA; color: var(--paper); }
+    .btn-secondary { border-color: #33363D; }
+
+    .entry::before { background: rgba(236, 237, 239, 0.04); }
+    .copy-code { background: rgba(24, 25, 29, 0.75); }
+
+    /* Code colors adapted from Xcode's dark theme */
+    code[class*="language-"], pre[class*="language-"] { color: var(--ink); }
+    .token.comment { color: #7F8C98; }
+    .token.keyword, .token.tag, .token.selector-tag { color: #FF7AB2; }
+    .token.string, .token.attr-value { color: #FF8170; }
+    .token.number, .token.symbol, .token.constant { color: #D9C97C; }
+    .token.regex, .token.important { color: #78C2B3; }
+    .token.property, .token.attr-name { color: #FFA14F; }
+    .token.function, .token.variable { color: #67B7A4; }
+    .token.class-name, .token.builtin { color: #DABAFF; }
+    .token.operator, .token.punctuation { color: var(--ink); }
+    .token.meta { color: #FD8F3F; }
+}

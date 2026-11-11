@@ -1,4 +1,5 @@
 ---
+image: https://arturoa925.github.io/images/og.png
 layout: ProjectPage
 order: 4
 platform: iOS, in progress

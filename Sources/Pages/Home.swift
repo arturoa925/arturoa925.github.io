@@ -2,8 +2,9 @@ import Foundation
 import Ignite
 
 struct Home: StaticPage {
-    var title = "Software Developer"
+    var title = "Arturo Ayala, iOS and full-stack developer"
     var description = "Software developer building native iOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React."
+    var image: URL? = PortfolioSite.shareImage
 
     @Environment(\.articles) var articles
 

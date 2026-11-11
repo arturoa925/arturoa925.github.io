@@ -2,8 +2,9 @@ import Foundation
 import Ignite
 
 struct Writing: StaticPage {
-    var title = "Writing"
+    var title = "Writing | Arturo Ayala"
     var description = "Notes on Swift, problem solving, debugging and how I build apps."
+    var image: URL? = PortfolioSite.shareImage
 
     @Environment(\.articles) var articles
 
