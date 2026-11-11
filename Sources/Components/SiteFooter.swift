@@ -13,7 +13,7 @@ struct SiteFooter: HTML {
                 Link("LinkedIn", target: "https://www.linkedin.com/in/arturo-ayala-775493187")
                     .target(.blank)
                     .relationship(.noOpener, .noReferrer)
-                Link("Email", target: "mailto:ayalaarturo925@gmail.com")
+                Link("ayalaarturo925@gmail.com", target: "mailto:ayalaarturo925@gmail.com")
             }
             .class("links")
         }

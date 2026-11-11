@@ -11,6 +11,7 @@ struct MainLayout: Layout {
             NavBar()
             content
             SiteFooter()
+            Script(file: "/js/site.js")
         }
     }
 }
