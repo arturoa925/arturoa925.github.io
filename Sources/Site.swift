@@ -26,7 +26,8 @@ struct PortfolioSite: Site {
     var syntaxHighlighterConfiguration: SyntaxHighlighterConfiguration = .init(languages: [.swift, .javaScript, .bash])
 
     var lightTheme: (any Theme)? = PortfolioLightTheme()
-    var darkTheme: (any Theme)? = PortfolioDarkTheme()
+    // Light only for now: the dark theme left the page background white in Ignite, washing out text.
+    var darkTheme: (any Theme)? = nil
 
     var homePage = Home()
     var layout = MainLayout()

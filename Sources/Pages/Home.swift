@@ -30,7 +30,7 @@ struct Home: StaticPage {
             }
             .margin(.top, .medium)
         }
-        .padding(.vertical, .xLarge)
+        .padding(.bottom, .large)
 
         // Featured projects
         Text("Projects")
