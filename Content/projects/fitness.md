@@ -4,7 +4,7 @@ layout: ProjectPage
 order: 3
 platform: Full-stack
 date: 2026-09-01
-subtitle: A full-stack training app with an offline-first React Native client and a Node.js, Express and PostgreSQL API.
+subtitle: A full-stack training app with a React Native client that keeps working offline after sign-in, and a Node.js, Express and PostgreSQL API.
 stack: React Native, Expo, JavaScript, Node.js, Express, Sequelize, PostgreSQL, JWT, OAuth, OpenAI API
 repo: https://github.com/arturoa925/FITNESS-client
 serverRepo: https://github.com/arturoa925/FITNESS-server
@@ -15,7 +15,7 @@ tags: Full-stack
 ## TL;DR
 
 - Follow structured training programs day by day, generate a one-off AI workout, and log workouts and food on a calendar.
-- The client is **offline-first**: every write lands locally first and syncs when the connection comes back.
+- After the first sign-in, the client **keeps working offline**: every write lands locally first and syncs when the connection comes back.
 - The API handles email, Google and GitHub sign-in, program enrollment, a per-user calendar, and AI-generated workouts. Code: [client](https://github.com/arturoa925/FITNESS-client) and [server](https://github.com/arturoa925/FITNESS-server).
 
 ## What it does
@@ -40,15 +40,15 @@ React Native (Expo) client                 Node.js / Express API
 
 ## Code choices and why
 
-### Offline-first writes
+### Working offline after sign-in
 
-A workout app gets used in gyms, garages and basements, so it can't depend on signal. `UserContext` handles every write the same way:
+A workout app gets used in gyms, garages and basements, so it can't depend on signal for every action. It does need a stable connection once: the user signs in and the app downloads their data. After that, the connection can drop. `UserContext` handles every write the same way:
 
 1. Update local state and `AsyncStorage` **first**, so the UI responds instantly.
 2. If the request fails or the device is offline, push the action onto a persisted `pendingOps` queue.
 3. A `NetInfo` listener replays the queue when connectivity returns. Anything that still fails stays queued for the next try.
 
-The user never loses a completed workout because of a dead zone.
+Once signed in, the user never loses a completed workout because of a dead zone. Signing in for the first time, or on a new device, still needs a connection, since the server has to issue the token.
 
 ### A calendar row per day, with JSONB
 

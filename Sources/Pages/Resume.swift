@@ -51,7 +51,7 @@ struct Resume: StaticPage {
             detail: "Full-stack training app · React Native, Expo, Node.js, Express, PostgreSQL",
             dates: "github.com/arturoa925/FITNESS-client · FITNESS-server",
             bullets: [
-                "Built an offline-first client that queues writes locally and replays them when connectivity returns.",
+                "Built a client that keeps working offline after sign-in, queuing writes locally and replaying them when connectivity returns.",
                 "Designed a REST API with Sequelize on PostgreSQL, bcrypt and JWT auth, Google and GitHub OAuth, and rate-limited login.",
                 "Added AI-generated daily workouts through the OpenAI API with strict JSON validation and a graceful fallback.",
             ]
