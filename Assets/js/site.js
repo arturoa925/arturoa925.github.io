@@ -94,3 +94,172 @@
         "font: 13px Geist, system-ui; color: #4A5060;"
     );
 })();
+
+// ── Hand-trace widget: steps through subsets([1, 2]) three ways ──
+(function () {
+    var root = document.querySelector('[data-trace="subsets"]');
+    if (!root) return;
+    var nums = [1, 2];
+
+    var modes = {
+        value: {
+            label: "Value copies",
+            code: [
+                ["call", "func explore(_ index: Int, _ path: [Int]) {"],
+                ["record", "    if index == nums.count { result.append(path); return }"],
+                ["choose", "    explore(index + 1, path + [nums[index]])  // choose"],
+                ["skip", "    explore(index + 1, path)                  // skip"],
+                ["", "}"]
+            ]
+        },
+        shared: {
+            label: "Shared + undo",
+            code: [
+                ["call", "func explore(_ index: Int, _ path: inout [Int]) {"],
+                ["record", "    if index == nums.count { result.append(path); return }"],
+                ["choose", "    path.append(nums[index])    // choose"],
+                ["", "    explore(index + 1, &path)"],
+                ["undo", "    path.removeLast()           // un-choose"],
+                ["skip", "    explore(index + 1, &path)   // skip"],
+                ["", "}"]
+            ]
+        },
+        bug: {
+            label: "Shared, no undo",
+            code: [
+                ["call", "func explore(_ index: Int, _ path: inout [Int]) {"],
+                ["record", "    if index == nums.count { result.append(path); return }"],
+                ["choose", "    path.append(nums[index])    // choose"],
+                ["", "    explore(index + 1, &path)"],
+                ["", "    // forgot path.removeLast()"],
+                ["skip", "    explore(index + 1, &path)   // skip"],
+                ["", "}"]
+            ]
+        }
+    };
+
+    function fmt(a) { return "[" + a.join(", ") + "]"; }
+
+    // Run the real recursion and record a snapshot at each line worth stopping on.
+    function trace(mode) {
+        var steps = [], results = [], stack = [], shared = [];
+        function snap(line, note) {
+            steps.push({
+                line: line, note: note,
+                stack: stack.map(function (f) { return { index: f.index, path: f.path ? f.path.slice() : null }; }),
+                shared: shared.slice(),
+                results: results.map(function (r) { return r.slice(); })
+            });
+        }
+        function exploreValue(i, path) {
+            stack.push({ index: i, path: path });
+            snap("call", "Call explore(" + i + ", " + fmt(path) + "). This frame gets its own copy of path.");
+            if (i === nums.length) {
+                results.push(path.slice());
+                snap("record", "index == " + nums.length + ", so record " + fmt(path) + ".");
+                stack.pop(); return;
+            }
+            snap("choose", "Choose " + nums[i] + ": pass a new array " + fmt(path.concat([nums[i]])) + " down. This frame's path is untouched.");
+            exploreValue(i + 1, path.concat([nums[i]]));
+            snap("skip", "Back in this frame, path is still " + fmt(path) + ". Skip " + nums[i] + ".");
+            exploreValue(i + 1, path);
+            stack.pop();
+        }
+        function exploreShared(i, undo) {
+            stack.push({ index: i, path: null });
+            snap("call", "Call explore(" + i + ", &path). Every frame points at the same array.");
+            if (i === nums.length) {
+                results.push(shared.slice());
+                snap("record", "index == " + nums.length + ", so record " + fmt(shared) + ".");
+                stack.pop(); return;
+            }
+            shared.push(nums[i]);
+            snap("choose", "Choose " + nums[i] + ": append to the shared array, now " + fmt(shared) + ".");
+            exploreShared(i + 1, undo);
+            if (undo) {
+                shared.pop();
+                snap("undo", "removeLast() puts the shared array back to " + fmt(shared) + " before skipping.");
+            } else {
+                snap("skip", "No undo, so the shared array is still " + fmt(shared) + ". The skip branch inherits the leftover " + nums[i] + ".");
+            }
+            if (undo) snap("skip", "Skip " + nums[i] + " with the array at " + fmt(shared) + ".");
+            exploreShared(i + 1, undo);
+            stack.pop();
+        }
+        if (mode === "value") exploreValue(0, []);
+        else exploreShared(0, mode === "shared");
+        snap("", mode === "bug"
+            ? "Done. Two answers are wrong, and nothing crashed. That's the leak tracing catches."
+            : "Done. Four subsets: " + results.map(fmt).join(", ") + ".");
+        return steps;
+    }
+
+    var mode = "value", steps = trace(mode), at = 0;
+
+    root.innerHTML =
+        '<div class="trace-modes" role="group" aria-label="How path is passed"></div>' +
+        '<div class="trace-body">' +
+            '<pre class="trace-code" aria-hidden="true"></pre>' +
+            '<div class="trace-state">' +
+                '<p class="trace-label">Call stack</p><div class="trace-stack"></div>' +
+                '<div class="trace-shared-wrap"><p class="trace-label">Shared path</p><div class="trace-shared"></div></div>' +
+                '<p class="trace-label">result</p><div class="trace-results"></div>' +
+            '</div>' +
+        '</div>' +
+        '<p class="trace-note" aria-live="polite"></p>' +
+        '<div class="trace-controls">' +
+            '<button type="button" class="btn btn-secondary" data-act="back">Back</button>' +
+            '<button type="button" class="btn btn-primary" data-act="step">Step</button>' +
+            '<button type="button" class="btn btn-secondary" data-act="reset">Reset</button>' +
+            '<span class="trace-count"></span>' +
+        '</div>';
+
+    var modeBar = root.querySelector(".trace-modes");
+    Object.keys(modes).forEach(function (key) {
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = modes[key].label; b.dataset.mode = key;
+        b.addEventListener("click", function () { mode = key; steps = trace(mode); at = 0; render(); });
+        modeBar.appendChild(b);
+    });
+
+    function chip(arr) {
+        return '<span class="trace-chip">' + (arr.length ? arr.map(function (n) { return "<b>" + n + "</b>"; }).join("") : "<i>empty</i>") + "</span>";
+    }
+
+    function render() {
+        var s = steps[at];
+        modeBar.querySelectorAll("button").forEach(function (b) {
+            b.setAttribute("aria-pressed", b.dataset.mode === mode ? "true" : "false");
+        });
+        root.querySelector(".trace-code").innerHTML = modes[mode].code.map(function (l) {
+            var text = l[1].replace(/&/g, "&amp;").replace(/</g, "&lt;");
+            return '<span class="' + (l[0] && l[0] === s.line ? "on" : "") + '">' + text + "</span>";
+        }).join("\n");
+        root.querySelector(".trace-stack").innerHTML = s.stack.length ? s.stack.map(function (f, i) {
+            var top = i === s.stack.length - 1 ? " top" : "";
+            var right = f.path ? chip(f.path) : '<span class="trace-arrow">points to shared path</span>';
+            return '<div class="trace-frame' + top + '"><code>explore(index: ' + f.index + ")</code>" + right + "</div>";
+        }).join("") : '<div class="trace-empty">empty</div>';
+        root.querySelector(".trace-shared-wrap").hidden = mode === "value";
+        root.querySelector(".trace-shared").innerHTML = chip(s.shared);
+        root.querySelector(".trace-results").innerHTML = s.results.length ? s.results.map(chip).join("") : '<span class="trace-empty">nothing yet</span>';
+        root.querySelector(".trace-note").textContent = s.note;
+        root.querySelector(".trace-count").textContent = "Step " + (at + 1) + " of " + steps.length;
+        root.querySelector('[data-act="back"]').disabled = at === 0;
+        root.querySelector('[data-act="step"]').disabled = at === steps.length - 1;
+        root.classList.toggle("is-bug", mode === "bug" && at === steps.length - 1);
+    }
+
+    root.addEventListener("click", function (e) {
+        var act = e.target.getAttribute && e.target.getAttribute("data-act");
+        if (act === "step" && at < steps.length - 1) at++;
+        if (act === "back" && at > 0) at--;
+        if (act === "reset") at = 0;
+        if (act) render();
+    });
+    root.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" && at < steps.length - 1) { at++; render(); }
+        if (e.key === "ArrowLeft" && at > 0) { at--; render(); }
+    });
+    render();
+})();

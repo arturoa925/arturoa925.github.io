@@ -66,4 +66,8 @@ Forget `removeLast()` here and every branch sees the leftovers of the branches b
 
 When I trace by hand, I draw each variable as a box. Value types get a new box for every call. References get an arrow pointing to one shared box. The moment two arrows point at the same box, I know mutation will leak between calls, and I know whether I need an undo step.
 
+Here's that trace for `subsets([1, 2])`. Step through each version, and watch what happens to `result` when the undo step is missing.
+
+<div class="trace" data-trace="subsets" tabindex="0" aria-label="Step-through trace of subsets of [1, 2]"><p>Turn on JavaScript to step through this trace. Value copies and shared-with-undo both give [1, 2], [1], [2], []. Without the undo, the result is [1, 2], [1, 2], [1, 2, 2], [1, 2, 2].</p></div>
+
 That's the whole point of tracing first. Writing the code is the easy part once the model in my head matches what the program actually does.
