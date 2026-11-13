@@ -7,6 +7,7 @@ date: 2026-09-01
 subtitle: A full-stack training app with an offline-first React Native client and a Node.js, Express and PostgreSQL API.
 stack: React Native, Expo, JavaScript, Node.js, Express, Sequelize, PostgreSQL, JWT, OAuth, OpenAI API
 repo: https://github.com/arturoa925/FITNESS-client
+serverRepo: https://github.com/arturoa925/FITNESS-server
 tags: Full-stack
 ---
 # FITNESS

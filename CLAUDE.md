@@ -36,7 +36,8 @@ Tags in use: Swift, DSA, Process, Debugging, Testing, Full-stack, Design.
 ## Adding or editing a project
 
 `Content/projects/<slug>.md` with front matter `layout: ProjectPage`, `order` (position in
-lists), `platform` (right-hand label), `subtitle`, `stack` (comma-separated), `repo`, `image`.
+lists), `platform` (right-hand label), `subtitle`, `stack` (comma-separated), `repo`, `image`, and optionally
+`serverRepo` for a separate backend repo (adds a second button).
 Case study sections: TL;DR, What it does, Architecture, Code choices and why, Testing,
 What's next. "Where my head was" only from Arturo's own words.
 

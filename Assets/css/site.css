@@ -337,3 +337,6 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
 
 /* About page section headings: h2 for document order, sized like small headings */
 .about-section h2 { font-size: 1.15rem; margin-top: 2rem; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+
+.article-head .repo-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 0.75rem; }
+.article-head .repo-links .btn { margin-top: 0; }
