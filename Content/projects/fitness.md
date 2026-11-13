@@ -15,7 +15,7 @@ tags: Full-stack
 ## TL;DR
 
 - Follow structured training programs day by day, generate a one-off AI workout, and log workouts and food on a calendar.
-- After the first sign-in, the client **keeps working offline**: every write lands locally first and syncs when the connection comes back.
+- After the first sign-in, the client **keeps working offline**: completed workouts and food logs land on the device first and sync when the connection comes back.
 - The API handles email, Google and GitHub sign-in, program enrollment, a per-user calendar, and AI-generated workouts. Code: [client](https://github.com/arturoa925/FITNESS-client) and [server](https://github.com/arturoa925/FITNESS-server).
 
 ## What it does
@@ -42,13 +42,21 @@ React Native (Expo) client                 Node.js / Express API
 
 ### Working offline after sign-in
 
-A workout app gets used in gyms, garages and basements, so it can't depend on signal for every action. It does need a stable connection once: the user signs in and the app downloads their data. After that, the connection can drop. `UserContext` handles every write the same way:
+A workout app gets used in gyms, garages and basements, so it can't depend on signal for every action. It does need a connection once: signing in is what gives the device a login token and a cached copy of the user's profile, both kept in `expo-secure-store`. On later launches, `AuthGate` restores the user from that cache right away, so the app opens without signal and refreshes the profile in the background when it can.
+
+After that, completed workouts and food logs go through `UserContext` the same way:
 
 1. Update local state and `AsyncStorage` **first**, so the UI responds instantly.
 2. If the request fails or the device is offline, push the action onto a persisted `pendingOps` queue.
 3. A `NetInfo` listener replays the queue when connectivity returns. Anything that still fails stays queued for the next try.
 
-Once signed in, the user never loses a completed workout because of a dead zone. Signing in for the first time, or on a new device, still needs a connection, since the server has to issue the token.
+Once signed in, the user never loses a completed workout or food log because of a dead zone.
+
+The limits, straight from the code:
+
+- **Signing in for the first time, or on a new device, needs a connection**, because the server has to issue the token.
+- **Tokens expire after one hour.** If the connection comes back after that, the server rejects the replay. The writes stay queued, and the user has to sign in again before they can sync.
+- **Enrolling in a program offline** is saved on the device, but it isn't queued for the server yet.
 
 ### A calendar row per day, with JSONB
 
