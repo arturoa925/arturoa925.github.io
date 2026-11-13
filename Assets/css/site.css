@@ -305,3 +305,17 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
     .token.operator, .token.punctuation { color: var(--ink); }
     .token.meta { color: #FD8F3F; }
 }
+
+/* ── About: portrait ──────────────────────────────────────── */
+.about-head .portrait {
+    display: block;
+    width: 132px;
+    height: 132px;
+    object-fit: cover;
+    border-radius: 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 0 0 1px var(--hairline);
+}
+@media (max-width: 560px) {
+    .about-head .portrait { width: 112px; height: 112px; border-radius: 24px; }
+}

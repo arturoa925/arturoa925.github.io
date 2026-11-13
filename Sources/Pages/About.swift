@@ -8,13 +8,16 @@ struct About: StaticPage {
 
     var body: some HTML {
         Section {
+            Image("/images/arturo.jpg", description: "Arturo Ayala, smiling, outdoors in a white cap and black T-shirt")
+                .class("portrait")
+
             Text("About")
                 .font(.title1)
 
             Text("I build native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React. My focus is state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
                 .class("lead")
         }
-        .class("page-head")
+        .class("page-head", "about-head")
 
         Section {
             Text("Recent work")
