@@ -341,34 +341,18 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
 .article-head .repo-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 0.75rem; }
 .article-head .repo-links .btn { margin-top: 0; }
 
-/* ── Hand-trace widget ────────────────────────────────────── */
-.trace { border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; margin: 1.5rem 0 2rem; background: var(--paper); }
-.trace-modes { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-.trace-modes button { font: 500 0.85rem var(--sans); color: var(--graphite); background: transparent; border: 1px solid var(--hairline); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
-.trace-modes button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.trace-body { display: grid; grid-template-columns: 1fr; gap: 14px; }
-.trace-state { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); column-gap: 18px; }
-.trace-state .trace-label:first-child, .trace-stack { grid-column: 1; }
-.trace-stack { grid-row: 2 / span 4; }
-.trace-shared-wrap, .trace-state .trace-label:nth-of-type(3), .trace-results { grid-column: 2; }
-.trace .trace-code { margin: 0 !important; font-size: 0.78rem; line-height: 1.7; white-space: pre; }
-.trace-code span { display: inline-block; min-width: 100%; border-radius: 4px; padding: 0 4px; margin: 0 -4px; }
-.trace-code span.on { background: rgba(240, 81, 56, 0.14); box-shadow: inset 2px 0 0 var(--swift); }
-.trace-label { font-size: 0.8rem; font-weight: 500; color: var(--mist); margin: 0 0 6px; }
-.trace-state > div { margin-bottom: 14px; }
-.trace-frame { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 10px; border: 1px solid var(--hairline); border-radius: 8px; margin-bottom: 4px; font-size: 0.85rem; }
-.trace-frame.top { border-color: var(--swift); }
-.trace-frame code { background: none; padding: 0; font-size: 0.8rem; }
-.trace-arrow { color: var(--mist); font-size: 0.78rem; }
-.trace-chip { display: inline-flex; gap: 3px; margin: 0 4px 4px 0; padding: 3px; border: 1px solid var(--hairline); border-radius: 7px; background: var(--wash); vertical-align: middle; }
-.trace-chip b { font: 500 0.82rem var(--mono); min-width: 22px; text-align: center; padding: 1px 4px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 5px; }
-.trace-chip i { font-size: 0.78rem; color: var(--mist); padding: 1px 6px; font-style: normal; }
-.trace-empty { color: var(--mist); font-size: 0.85rem; }
-.trace-note { min-height: 3.2em; margin: 4px 0 12px; color: var(--ink); font-size: 0.95rem; }
-.trace.is-bug .trace-note { color: var(--swift); }
-.trace-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.trace-controls .btn { padding: 0.4rem 0.9rem; }
-.trace-controls .btn:disabled { opacity: 0.4; }
-.trace-count { margin-left: auto; color: var(--mist); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
-@media (max-width: 640px) { .trace-state { grid-template-columns: 1fr; } .trace-state > * { grid-column: 1 !important; grid-row: auto !important; } }
-.trace-controls .btn-primary:disabled { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* ── Box-and-arrow diagrams in posts ─────────────────────── */
+.diagram { display: flex; gap: 20px; flex-wrap: wrap; margin: 1.5rem 0 2rem; }
+.diagram figure { flex: 1 1 300px; margin: 0; border: 1px solid var(--hairline); border-radius: 14px; padding: 16px 16px 12px; }
+.diagram svg { display: block; width: 100%; height: auto; }
+.diagram .box { fill: var(--paper); stroke: var(--graphite); stroke-width: 1.5; }
+.diagram .box.shared { stroke: var(--swift); stroke-width: 2; }
+.diagram .arrow { stroke: var(--mist); stroke-width: 1.5; fill: none; }
+.diagram .arrow.shared { stroke: var(--swift); }
+.diagram .head { fill: var(--mist); }
+.diagram .head.shared { fill: var(--swift); }
+.diagram text { font-family: var(--mono); font-size: 13px; fill: var(--ink); }
+.diagram text.label { font-family: var(--sans); font-size: 12px; fill: var(--mist); }
+.diagram figcaption { font-size: 0.9rem; color: var(--graphite); margin-top: 10px; }
+.diagram figcaption strong { color: var(--ink); }
