@@ -25,6 +25,33 @@ In Launch Control, my daily planner, reminders have a **Mark Complete** button r
 3. **Output:** the event is saved.
 4. **Feedback:** the app shows the event as completed and the streak updates.
 
+<figure class="board" aria-label="Mock Figma board for Mark Complete: two screens on top, the data loop with three what-breaks notes below">
+<div class="board-row board-screens">
+<div class="frame"><p class="frame-label">Notification</p>
+<div class="phone lock"><p class="lock-time">9:41</p>
+<div class="notif"><div class="notif-head"><span class="app-dot"></span><span>Launch Control</span><span class="notif-when">now</span></div><p class="notif-title">Morning workout</p><p class="notif-body">Reminder from Launch Control</p></div>
+<div class="notif-action">Mark Complete</div>
+</div></div>
+<div class="board-arrow" aria-hidden="true"></div>
+<div class="frame"><p class="frame-label">Protocol screen</p>
+<div class="phone app"><p class="app-date">Today</p><p class="app-streak">4-day streak</p>
+<div class="event done"><span class="check"></span>Morning workout</div>
+<div class="event"><span class="check"></span>NeetCode: 2 problems</div>
+<div class="event"><span class="check"></span>Read concurrency chapter</div>
+</div></div>
+</div>
+<div class="board-row board-loop">
+<div class="loop-box"><strong>Input</strong><span>Tap Mark Complete</span></div>
+<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><p class="sticky">App not running?</p></div>
+<div class="loop-box"><strong>Processing</strong><span>Delegate finds the event</span></div>
+<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><p class="sticky">Which store?</p></div>
+<div class="loop-box"><strong>Output</strong><span>Event saved</span></div>
+<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><p class="sticky">Stale copy?</p></div>
+<div class="loop-box"><strong>Feedback</strong><span>Shows done, streak updates</span></div>
+</div>
+<figcaption>The board for Mark Complete: screens on top, data loop underneath, a "what breaks?" note on every arrow. Recreated for this post with sample events.</figcaption>
+</figure>
+
 Now, what breaks at each arrow?
 
 - **Input → Processing:** the app might not be running. The delegate has to work without the UI being alive.
