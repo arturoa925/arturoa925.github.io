@@ -60,7 +60,7 @@ and confirm internal links resolve before pushing.
 
 ## Design tokens
 
-Defined in `Assets/css/site.css`: paper #FCFCFD, ink #15171C, graphite #4A5060, mist #868B98,
+Defined in `Assets/css/site.css`: paper #FCFCFD, ink #15171C, graphite #4A5060, mist #6B7080,
 hairline #E7E8EC, Swift orange #F05138 (accent: caret, link hover, focus only). Geist / Geist Mono.
 Dark mode overrides the same variables under `prefers-color-scheme: dark`.
 Interactive touches live in `Assets/js/site.js` and must respect reduced motion and touch screens.

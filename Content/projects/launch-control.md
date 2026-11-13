@@ -107,4 +107,7 @@ No accounts, no network calls, no analytics. The app ships a privacy manifest th
 
 ## What's next
 
-Dynamic Type support across every screen, more test coverage around the App Intents, and an App Store release.
+- **More natural Siri requests.** Apple's newer Siri capabilities could let people add and manage tasks in everyday language instead of fixed phrases. I'm experimenting with what they can do for Launch Control before building on them.
+- Dynamic Type support across every screen.
+- More test coverage around the App Intents.
+- An App Store release.

@@ -2,13 +2,15 @@
    Portfolio design tokens
    Paper / Ink / Graphite / Mist / Hairline, one Swift-orange accent.
    ────────────────────────────────────────────────────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap");
+/* Geist is self-hosted (SIL Open Font License, see /fonts) so text renders without a third-party request. */
+@font-face { font-family: "Geist"; src: url("/fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url("/fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 
 :root {
     --paper: #FCFCFD;
     --ink: #15171C;
     --graphite: #4A5060;
-    --mist: #868B98;
+    --mist: #6B7080;
     --hairline: #E7E8EC;
     --wash: #F4F5F7;
     --swift: #F05138;
@@ -332,3 +334,6 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
 .table > :not(caption) > * > * { color: var(--graphite); padding-left: 0; }
 .table > thead > tr > th { color: var(--ink); border-bottom-color: var(--ink); }
 .table > tbody > tr > td:first-child { color: var(--ink); }
+
+/* About page section headings: h2 for document order, sized like small headings */
+.about-section h2 { font-size: 1.15rem; margin-top: 2rem; margin-bottom: 0.5rem; letter-spacing: -0.01em; }

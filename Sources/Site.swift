@@ -22,7 +22,7 @@ struct PortfolioSite: Site {
     var author = "Arturo Ayala"
     var timeZone: TimeZone? = TimeZone(identifier: "America/Los_Angeles")
 
-    var builtInIconsEnabled: BootstrapOptions = .localBootstrap
+    var builtInIconsEnabled: BootstrapOptions = .none
     var syntaxHighlighterConfiguration: SyntaxHighlighterConfiguration = .init(languages: [.swift, .javaScript, .bash])
 
     var lightTheme: (any Theme)? = PortfolioLightTheme()
@@ -33,6 +33,8 @@ struct PortfolioSite: Site {
 
     /// The preview image LinkedIn, iMessage and others show when the site is shared.
     static let shareImage = URL(static: "https://arturoa925.github.io/images/og.png")
+
+    var errorPage = NotFound()
 
     var homePage = Home()
     var layout = MainLayout()

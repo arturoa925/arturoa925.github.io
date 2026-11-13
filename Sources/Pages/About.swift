@@ -21,24 +21,24 @@ struct About: StaticPage {
 
         Section {
             Text("Recent work")
-                .font(.title3)
+                .font(.title2)
             Text("A Siri-driven daily planner built on App Intents and SwiftData. An iPhone and Apple Watch strength tracker synced with WatchConnectivity. A street-level map that reacts to weather and time of day. A full-stack React Native training app with its own Node.js and PostgreSQL backend.")
 
             Text("How I work")
-                .font(.title3)
+                .font(.title2)
             Text("I map screens and data flow before I write code, trace problems by hand, and test on real devices in real conditions.")
 
             Text("Stack")
-                .font(.title3)
+                .font(.title2)
             Text("Swift, SwiftUI, SwiftData, App Intents, watchOS, Swift Concurrency, TypeScript, JavaScript, React, React Native, Expo, Node.js, Express, PostgreSQL, Git.")
 
             Text("Background")
-                .font(.title3)
+                .font(.title2)
             Text("Technical Specialist at Apple. UC Berkeley Full Stack Web Development Bootcamp, 2024. Bilingual in English and Spanish.")
 
             Text(markdown: "[Résumé](/resume), [GitHub](https://github.com/arturoa925), [LinkedIn](https://www.linkedin.com/in/arturo-ayala-775493187), [Email](mailto:ayalaarturo925@gmail.com)")
                 .margin(.top, .large)
         }
-        .class("prose")
+        .class("prose", "about-section")
     }
 }
