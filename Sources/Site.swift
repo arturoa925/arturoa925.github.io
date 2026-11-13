@@ -17,7 +17,7 @@ struct PortfolioWebsite {
 struct PortfolioSite: Site {
     var name = "Arturo Ayala"
     var titleSuffix = ""
-    var description: String? = "Software developer building native iOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React."
+    var description: String? = "Software developer building native iOS apps in Swift and SwiftUI, and full-stack apps in JavaScript and React."
     var url = URL(static: "https://arturoa925.github.io")
     var author = "Arturo Ayala"
     var timeZone: TimeZone? = TimeZone(identifier: "America/Los_Angeles")

@@ -14,7 +14,7 @@ struct About: StaticPage {
             Text("About")
                 .font(.title1)
 
-            Text("I build native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in TypeScript and React. My focus is state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
+            Text("I build native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in JavaScript and React. My focus is state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
                 .class("lead")
         }
         .class("page-head", "about-head")
@@ -30,7 +30,7 @@ struct About: StaticPage {
 
             Text("Stack")
                 .font(.title2)
-            Text("Swift, SwiftUI, SwiftData, App Intents, watchOS, Swift Concurrency, TypeScript, JavaScript, React, React Native, Expo, Node.js, Express, PostgreSQL, Git.")
+            Text("Swift, SwiftUI, SwiftData, App Intents, watchOS, Swift Concurrency, JavaScript, TypeScript, React, React Native, Expo, Node.js, Express, PostgreSQL, Git.")
 
             Text("Background")
                 .font(.title2)

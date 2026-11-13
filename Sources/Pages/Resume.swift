@@ -17,7 +17,7 @@ struct Resume: StaticPage {
     static let pdfPath = "/files/arturo-ayala-resume.pdf"
 
     let skills: [(String, String)] = [
-        ("Languages", "Swift, TypeScript, JavaScript, HTML/CSS"),
+        ("Languages", "Swift, JavaScript, TypeScript, HTML/CSS"),
         ("Apple platforms", "SwiftUI, SwiftData, App Intents, WatchConnectivity, Core Location, CoreMotion, UserNotifications, Swift Concurrency, watchOS"),
         ("Web & mobile", "React, React Native, Expo, Node.js, Express, Sequelize, PostgreSQL, REST APIs, JWT/OAuth, OpenAI API"),
         ("Testing & quality", "Swift Testing, XCTest/XCUITest, VoiceOver and accessibility, MVVM"),
@@ -134,7 +134,7 @@ struct Resume: StaticPage {
             Text(markdown: "[ayalaarturo925@gmail.com](mailto:ayalaarturo925@gmail.com), [GitHub](https://github.com/arturoa925), [LinkedIn](https://www.linkedin.com/in/arturo-ayala-775493187)")
                 .class("meta")
 
-            Text("Software developer who builds native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in TypeScript, React and React Native. Focused on state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
+            Text("Software developer who builds native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in JavaScript, React and React Native. Focused on state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
                 .margin(.top, .medium)
 
             Text("Technical skills")
