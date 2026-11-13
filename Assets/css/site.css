@@ -319,3 +319,16 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
 @media (max-width: 560px) {
     .about-head .portrait { width: 112px; height: 112px; border-radius: 24px; }
 }
+
+/* Tables: override Bootstrap's table colors so text follows light/dark mode */
+.table {
+    --bs-table-color: var(--graphite);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--hairline);
+    --bs-table-striped-color: var(--graphite);
+    --bs-table-hover-color: var(--ink);
+    color: var(--graphite);
+}
+.table > :not(caption) > * > * { color: var(--graphite); padding-left: 0; }
+.table > thead > tr > th { color: var(--ink); border-bottom-color: var(--ink); }
+.table > tbody > tr > td:first-child { color: var(--ink); }
