@@ -342,17 +342,18 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
 .article-head .repo-links .btn { margin-top: 0; }
 
 
-/* ── Box-and-arrow diagrams in posts ─────────────────────── */
-.diagram { display: flex; gap: 20px; flex-wrap: wrap; margin: 1.5rem 0 2rem; }
-.diagram figure { flex: 1 1 300px; margin: 0; border: 1px solid var(--hairline); border-radius: 14px; padding: 16px 16px 12px; }
-.diagram svg { display: block; width: 100%; height: auto; }
-.diagram .box { fill: var(--paper); stroke: var(--graphite); stroke-width: 1.5; }
-.diagram .box.shared { stroke: var(--swift); stroke-width: 2; }
-.diagram .arrow { stroke: var(--mist); stroke-width: 1.5; fill: none; }
-.diagram .arrow.shared { stroke: var(--swift); }
-.diagram .head { fill: var(--mist); }
-.diagram .head.shared { fill: var(--swift); }
-.diagram text { font-family: var(--mono); font-size: 13px; fill: var(--ink); }
-.diagram text.label { font-family: var(--sans); font-size: 12px; fill: var(--mist); }
-.diagram figcaption { font-size: 0.9rem; color: var(--graphite); margin-top: 10px; }
-.diagram figcaption strong { color: var(--ink); }
+
+/* ── Step containers in posts ─────────────────────────────── */
+.steps { list-style: none; padding: 0 !important; margin: 1.5rem 0 2rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; counter-reset: none; }
+.steps li { position: relative; margin: 0 !important; padding: 14px 14px 16px; border: 1px solid var(--hairline); border-radius: 12px; background: var(--wash); display: flex; flex-direction: column; gap: 4px; }
+.steps li::marker { content: none; }
+.steps li + li::before { content: ""; position: absolute; left: -17px; top: 50%; width: 12px; height: 12px; border-top: 1.5px solid var(--mist); border-right: 1.5px solid var(--mist); transform: translateY(-50%) rotate(45deg); }
+.steps .step-n { font: 500 0.75rem var(--mono); color: var(--mist); }
+.steps strong { font-size: 0.98rem; color: var(--ink); }
+.steps span:last-child { font-size: 0.85rem; line-height: 1.45; color: var(--graphite); }
+.steps li.key { border-color: var(--swift); background: var(--paper); }
+.steps li.key .step-n { color: var(--swift); }
+@media (max-width: 640px) {
+    .steps { grid-template-columns: 1fr; gap: 18px; }
+    .steps li + li::before { left: 50%; top: -14px; transform: translateX(-50%) rotate(135deg); }
+}
