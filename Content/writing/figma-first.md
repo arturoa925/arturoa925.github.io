@@ -25,31 +25,33 @@ In Launch Control, my daily planner, reminders have a **Mark Complete** button r
 3. **Output:** the event is saved.
 4. **Feedback:** the app shows the event as completed and the streak updates.
 
-<figure class="board" aria-label="Mock Figma board for Mark Complete: two screens on top, the data loop with three what-breaks notes below">
+<figure class="board" aria-label="Wireframe board for Mark Complete: a lock screen and the Protocol screen on top, the data loop below, with a what-breaks sticky note on every arrow">
+<p class="board-title">mark complete</p>
 <div class="board-row board-screens">
-<div class="frame"><p class="frame-label">Notification</p>
-<div class="phone lock"><p class="lock-time">9:41</p>
-<div class="notif"><div class="notif-head"><span class="app-dot"></span><span>Launch Control</span><span class="notif-when">now</span></div><p class="notif-title">Morning workout</p><p class="notif-body">Reminder from Launch Control</p></div>
-<div class="notif-action">Mark Complete</div>
+<div class="frame"><p class="frame-label">lock screen</p>
+<div class="wire phone"><p class="ph ph-lg">time</p>
+<div class="ph-box"><span class="ph">notification card</span><span class="ph ph-sm">event title, app name</span></div>
+<div class="ph-pill key">mark complete btn</div>
 </div></div>
 <div class="board-arrow" aria-hidden="true"></div>
-<div class="frame"><p class="frame-label">Protocol screen</p>
-<div class="phone app"><p class="app-date">Today</p><p class="app-streak">4-day streak</p>
-<div class="event done"><span class="check"></span>Morning workout</div>
-<div class="event"><span class="check"></span>NeetCode: 2 problems</div>
-<div class="event"><span class="check"></span>Read concurrency chapter</div>
+<div class="frame"><p class="frame-label">protocol screen</p>
+<div class="wire phone"><p class="ph ph-lg">header text</p><p class="ph ph-sm">streak count</p>
+<div class="ph-row done"><span class="ph-check"></span><span class="ph">event row</span></div>
+<div class="ph-row"><span class="ph-check"></span><span class="ph">event row</span></div>
+<div class="ph-row"><span class="ph-check"></span><span class="ph">event row</span></div>
 </div></div>
 </div>
+<p class="board-title">data loop</p>
 <div class="board-row board-loop">
-<div class="loop-box"><strong>Input</strong><span>Tap Mark Complete</span></div>
-<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><p class="sticky">App not running?</p></div>
-<div class="loop-box"><strong>Processing</strong><span>Delegate finds the event</span></div>
-<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><p class="sticky">Which store?</p></div>
-<div class="loop-box"><strong>Output</strong><span>Event saved</span></div>
-<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><p class="sticky">Stale copy?</p></div>
-<div class="loop-box"><strong>Feedback</strong><span>Shows done, streak updates</span></div>
+<div class="wire loop-box"><strong>input</strong><span>tap mark complete</span></div>
+<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><ul class="sticky"><li>app not running?</li></ul></div>
+<div class="wire loop-box"><strong>processing</strong><span>delegate finds the event</span></div>
+<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><ul class="sticky"><li>which store?</li></ul></div>
+<div class="wire loop-box"><strong>output</strong><span>event saved</span></div>
+<div class="loop-gap"><span class="loop-arrow" aria-hidden="true"></span><ul class="sticky"><li>stale copy?</li></ul></div>
+<div class="wire loop-box"><strong>feedback</strong><span>shows done, streak updates</span></div>
 </div>
-<figcaption>The board for Mark Complete: screens on top, data loop underneath, a "what breaks?" note on every arrow. Recreated for this post with sample events.</figcaption>
+<figcaption>Wireframes on top, data loop underneath, a "what breaks?" note on every arrow. Drawn for this post in the style of my Figma boards.</figcaption>
 </figure>
 
 Now, what breaks at each arrow?
