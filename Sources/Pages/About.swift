@@ -72,7 +72,7 @@ struct About: StaticPage {
                 Text("I build native iOS and watchOS apps in Swift and SwiftUI, and full-stack apps in JavaScript and React. I care about state-driven UI, clean data flow, and architecture that stays readable as an app grows.")
                     .class("lead")
 
-                Text("Technical Specialist at Apple, in the San Francisco Bay Area. Bilingual in English and Spanish.")
+                Text("Technical Specialist at Apple, in the San Francisco Bay Area. Bilingual in English and Spanish. Interested in iOS and front-end web engineering roles.")
                     .class("about-facts")
 
                 Section {
