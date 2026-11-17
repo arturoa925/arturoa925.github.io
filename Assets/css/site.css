@@ -373,7 +373,7 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
 .phone { width: 168px; height: 214px; border-radius: 4px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; gap: 9px; }
 .ph { margin: 0; font-size: 0.72rem; color: var(--wire-ink); }
 .ph-lg { font-size: 0.95rem; margin: 2px 0; }
-.ph-sm { font-size: 0.64rem; color: var(--line); }
+.ph-sm { font-size: 0.66rem; color: var(--wire-ink); opacity: 0.78; }
 .ph-box { width: 100%; border: 1.25px solid var(--line); border-radius: 4px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 3px; }
 .ph-pill { font-size: 0.7rem; color: var(--wire-ink); border: 1.25px solid var(--line); border-radius: 999px; padding: 5px 12px; }
 .ph-pill.key { border-color: var(--swift); }
