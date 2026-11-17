@@ -228,6 +228,26 @@
         update();
     }
 
+    // ── 9. On phones, the nav slides away while you read down and comes back when you scroll up ──
+    var nav = document.querySelector(".site-nav");
+    var small = window.matchMedia("(max-width: 560px)");
+    if (nav) {
+        var lastY = window.scrollY, navTicking = false;
+        window.addEventListener("scroll", function () {
+            if (navTicking) return;
+            navTicking = true;
+            requestAnimationFrame(function () {
+                var y = window.scrollY, delta = y - lastY;
+                if (!small.matches || y < 120) nav.classList.remove("nav-hidden");
+                else if (delta > 6) nav.classList.add("nav-hidden");
+                else if (delta < -6) nav.classList.remove("nav-hidden");
+                lastY = y;
+                navTicking = false;
+            });
+        }, { passive: true });
+        nav.addEventListener("focusin", function () { nav.classList.remove("nav-hidden"); });
+    }
+
     // ── 5. For anyone who opens the developer console ──
     console.log(
         "%cHey, you opened the console.%c\n\nThis site is written in Swift with Ignite.\nSource: https://github.com/arturoa925/arturoa925.github.io\nSay hi: ayalaarturo925@gmail.com",

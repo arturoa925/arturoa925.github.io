@@ -2,7 +2,7 @@ import Foundation
 import Ignite
 
 /// Bump when site.css or site.js change, so browsers fetch the new files instead of a cached copy.
-let assetVersion = 20
+let assetVersion = 21
 
 struct MainLayout: Layout {
     var body: some Document {

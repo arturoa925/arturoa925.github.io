@@ -481,7 +481,8 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .log .entry::after { transition: none; } .log .entry:hover::after { transform: none; } }
 
 /* ── Gradient glow behind the hero ─────────────────────────── */
-html, body.container { overflow-x: clip; }
+html { overflow-x: hidden; }
+body.container { overflow-x: clip; }
 .hero::before, .hero::after { max-width: 100vw; }
 .hero { position: relative; isolation: isolate; }
 .hero::before, .hero::after {
@@ -544,3 +545,26 @@ html, body.container { overflow-x: clip; }
     .peek { background: rgba(28, 30, 36, 0.72); box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.6); }
 }
 @media (prefers-reduced-motion: reduce) { .peek { transition: opacity 0.12s linear; filter: none; transform: none; } }
+
+/* ── Phones: bigger tap targets, room for the copy button, reading time in lists ── */
+.entry-mins { display: none; }
+.site-nav { transition: transform 0.25s ease; }
+.site-nav.nav-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) { .site-nav { transition: none; } }
+@media (hover: none) {
+    pre, pre[class*="language-"] { padding-top: 2.75rem !important; }
+    .copy-code { top: 8px; right: 8px; padding: 6px 12px; }
+}
+@media (max-width: 560px) {
+    .entry-mins { display: inline; }
+    .site-nav .links a { display: inline-block; padding: 8px 0; }
+    .site-nav { row-gap: 0; padding-bottom: 4px; }
+    .site-footer a, .more-link, .article-head .back { display: inline-block; padding: 10px 0; }
+    .entry .entry-title { display: inline-block; padding: 4px 0; }
+    .site-nav .brand { display: inline-block; padding: 9px 0; }
+    .about-section a, .about-links a, .ig-main-content p.mt-4 a { display: inline-block; padding: 10px 0; }
+    .copy-code { padding: 8px 14px; }
+    .resume .meta a { display: inline-block; padding: 8px 0; }
+    .hero::before { right: -60px; }
+    .hero::after { right: 0; }
+}

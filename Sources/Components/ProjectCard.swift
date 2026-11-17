@@ -112,8 +112,12 @@ struct PostRow: HTML {
 
     var body: some HTML {
         Section {
-            Text(post.displayDate)
-                .class("entry-side")
+            Text {
+                Span(post.displayDate)
+                Span(", \(post.estimatedReadingMinutes) min read")
+                    .class("entry-mins")
+            }
+            .class("entry-side")
 
             Text {
                 Link(post.title, target: post.path)
