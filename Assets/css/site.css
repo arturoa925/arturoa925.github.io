@@ -613,3 +613,4 @@ body.container { overflow-x: clip; }
     .about-hero .actions a { padding-top: 0.65rem; padding-bottom: 0.65rem; }
 }
 .about-note { color: var(--graphite); margin: -8px 0 16px; }
+.about-note.after { margin: 4px 0 0; }

@@ -5,7 +5,7 @@ import Ignite
 private struct WorkStep {
     let title: String
     let detail: String
-    let post: String
+    let post: String?
 }
 
 /// One line in the background log.
@@ -21,21 +21,18 @@ struct About: StaticPage {
     var image: URL? = PortfolioSite.shareImage
 
     private let steps = [
-        WorkStep(title: "Map it in Figma first",
-                 detail: "Wireframes, then the data loop, then \"what breaks?\" at every arrow. I open an IDE only once the data design and the visuals are done.",
+        WorkStep(title: "Research",
+                 detail: "Understand the problem and what it needs before designing anything. I ask AI, ask teammates and read up.",
+                 post: nil),
+        WorkStep(title: "Design in Figma",
+                 detail: "Wireframes, then the data loop, then \"what breaks?\" at every arrow.",
                  post: "/writing/figma-first"),
-        WorkStep(title: "Pick the structure from the problem",
-                 detail: "Rewrite it in plain words and circle the verbs. They usually point straight at the right data structure.",
-                 post: "/writing/verbs-to-data-structures"),
-        WorkStep(title: "Trace it by hand",
-                 detail: "Walk a small example on paper before running anything, so the model in my head matches what the program does.",
+        WorkStep(title: "Code",
+                 detail: "Build it, trace it by hand, and test it on real devices.",
                  post: "/writing/pre-code-routine"),
-        WorkStep(title: "Make failures loud",
-                 detail: "No silent saves or swallowed errors. Log it, show it, and write a test that forces it.",
-                 post: "/writing/silent-failures"),
-        WorkStep(title: "Test where people actually are",
-                 detail: "Elevators, garages, bad Wi-Fi and lost signal, not just the simulator.",
-                 post: "/writing/field-testing")
+        WorkStep(title: "Research again, then code again",
+                 detail: "Building turns up questions the first pass didn't. I go back, learn more, and refine.",
+                 post: nil)
     ]
 
     private let now: [(String, String)] = [
@@ -104,8 +101,13 @@ struct About: StaticPage {
             Section {
                 ForEach(steps) { step in
                     Section {
-                        Text {
-                            Link(step.title, target: step.post)
+                        if let post = step.post {
+                            Text {
+                                Link(step.title, target: post)
+                                    .class("step-title")
+                            }
+                        } else {
+                            Text(step.title)
                                 .class("step-title")
                         }
                         Text(step.detail)
@@ -115,6 +117,9 @@ struct About: StaticPage {
                 }
             }
             .class("work-steps")
+
+            Text("The plan is a starting point. It changes as the work does.")
+                .class("about-note", "after")
         }
         .class("about-block")
 
