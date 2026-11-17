@@ -9,7 +9,7 @@ description: What would a map feel like if it was designed to be experienced ins
 
 What would a map feel like if it was designed to be experienced instead of read?
 
-Most map apps are tools: get from A to B as fast as possible. **Drift** asks the opposite question. It treats the world as something alive, with motion but no urgency and no pressure to get anywhere.
+Most map apps are tools: get from A to B as fast as possible. **[Drift](/projects/drift)** asks the opposite question. It treats the world as something alive, with motion but no urgency and no pressure to get anywhere.
 
 ## The theme engine
 
@@ -44,4 +44,4 @@ Real roads and building footprints come from OpenStreetMap through the Overpass 
 
 Every decision answers the same question: does this make the world feel alive, or does it make the screen feel busy? Color carries the mood, motion carries the life, and everything else gets out of the way.
 
-Drift is still in progress. Onboarding, settings and the floating controls are next.
+Drift is still in progress. Onboarding, settings and the floating controls are next. For the architecture and how I built it, read the [Drift case study](/projects/drift), or browse the code on [GitHub](https://github.com/arturoa925/Drift).
