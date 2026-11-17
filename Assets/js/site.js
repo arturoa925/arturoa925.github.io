@@ -5,7 +5,7 @@
     // Each block comes into focus while rising slightly into place.
     if (!reduceMotion && "IntersectionObserver" in window) {
         var targets = document.querySelectorAll(
-            ".hero h1, .hero .lead, .hero .actions, .page-head > *, .article-head > *, .section-title, " +
+            ".hero .lead, .hero .actions, .page-head > *, .article-head > *, .section-title, " +
             ".row-list > .entry, .prose > *, .about-section, .portrait, .shots figure"
         );
         document.documentElement.setAttribute("data-reveal", "");
