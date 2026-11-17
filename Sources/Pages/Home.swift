@@ -48,7 +48,7 @@ struct Home: StaticPage {
                 PostRow(post: post)
             }
         }
-        .class("row-list")
+        .class("row-list log")
         .margin(.bottom, .small)
 
         Text {

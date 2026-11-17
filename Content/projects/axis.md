@@ -1,6 +1,7 @@
 ---
 image: https://arturoa925.github.io/images/og.png
 layout: ProjectPage
+thumb: /images/projects/axis/builder.jpg
 order: 2
 platform: iOS + watchOS
 date: 2026-10-20

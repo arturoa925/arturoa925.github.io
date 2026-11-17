@@ -23,6 +23,6 @@ struct Writing: StaticPage {
                 PostRow(post: post)
             }
         }
-        .class("row-list")
+        .class("row-list log")
     }
 }

@@ -37,7 +37,8 @@ Tags in use: Swift, DSA, Process, Debugging, Testing, Full-stack, Design.
 
 `Content/projects/<slug>.md` with front matter `layout: ProjectPage`, `order` (position in
 lists), `platform` (right-hand label), `subtitle`, `stack` (comma-separated), `repo`, `image`, and optionally
-`serverRepo` for a separate backend repo (adds a second button).
+`serverRepo` for a separate backend repo (adds a second button), and `thumb` (plus optional
+`thumbDark`) for the screenshot shown in project rows.
 Case study sections: TL;DR, What it does, Architecture, Code choices and why, Testing,
 What's next. "Where my head was" only from Arturo's own words.
 
@@ -62,7 +63,11 @@ and confirm internal links resolve before pushing.
 ## Design tokens
 
 Defined in `Assets/css/site.css`: paper #FCFCFD, ink #15171C, graphite #4A5060, mist #6B7080,
-hairline #E7E8EC, Swift orange #F05138 (accent: caret, link hover, focus only). Geist / Geist Mono.
+hairline #E7E8EC, Swift orange #F05138 (accent: caret, link hover, focus). Geist / Geist Mono.
+Signature gradient: orange #F05138 → amber #FF9500 and violet #6A5CFF → sky #38BDF8, used only for the
+blurred hero glow, the reading progress bar and the writing-log dots. Writing lists render as a dated log
+(mono dates, timeline, dots that light up on scroll). Project rows show a screenshot via `thumb`/`thumbDark`
+front matter. Body text scales up on wide screens; keep legibility first.
 Dark mode overrides the same variables under `prefers-color-scheme: dark`.
 Interactive touches live in `Assets/js/site.js` and must respect reduced motion and touch screens.
 When you change site.css or site.js, bump `assetVersion` in `Sources/Layouts/MainLayout.swift` so visitors don't get a cached copy.

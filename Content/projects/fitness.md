@@ -1,6 +1,7 @@
 ---
 image: https://arturoa925.github.io/images/og.png
 layout: ProjectPage
+thumb: /images/projects/fitness/register.jpg
 order: 3
 platform: Full-stack
 date: 2026-09-01

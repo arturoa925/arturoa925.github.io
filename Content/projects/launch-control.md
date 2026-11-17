@@ -1,6 +1,8 @@
 ---
 image: https://arturoa925.github.io/images/og.png
 layout: ProjectPage
+thumb: /images/projects/launch-control/protocol.jpg
+thumbDark: /images/projects/launch-control/protocol-dark.jpg
 order: 1
 platform: iOS
 date: 2026-11-01

@@ -87,6 +87,39 @@
         block.appendChild(button);
     });
 
+    // ── 6. The writing log: each entry's dot lights up as it scrolls in ──
+    var entries = document.querySelectorAll(".log .entry");
+    if (entries.length) {
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+            entries.forEach(function (e) { e.classList.add("seen"); });
+        } else {
+            var watcher = new IntersectionObserver(function (items) {
+                items.forEach(function (item) {
+                    if (item.isIntersecting) { item.target.classList.add("seen"); watcher.unobserve(item.target); }
+                });
+            }, { rootMargin: "0px 0px -15% 0px" });
+            entries.forEach(function (e) { watcher.observe(e); });
+        }
+    }
+
+    // ── 7. A thin progress line while reading a post ──
+    var prose = document.querySelector(".article-head ~ .prose");
+    if (prose) {
+        var line = document.createElement("div");
+        line.className = "read-progress";
+        line.setAttribute("aria-hidden", "true");
+        document.body.appendChild(line);
+        var ticking = false;
+        function update() {
+            var start = prose.offsetTop, end = start + prose.offsetHeight - window.innerHeight;
+            var p = Math.min(1, Math.max(0, (window.scrollY - start) / Math.max(1, end - start)));
+            line.style.transform = "scaleX(" + p + ")";
+            ticking = false;
+        }
+        window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+        update();
+    }
+
     // ── 5. For anyone who opens the developer console ──
     console.log(
         "%cHey, you opened the console.%c\n\nThis site is written in Swift with Ignite.\nSource: https://github.com/arturoa925/arturoa925.github.io\nSay hi: ayalaarturo925@gmail.com",

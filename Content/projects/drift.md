@@ -1,6 +1,7 @@
 ---
 image: https://arturoa925.github.io/images/og.png
 layout: ProjectPage
+thumb: /images/projects/drift/sunset.jpg
 order: 4
 platform: iOS, in progress
 date: 2026-10-13
