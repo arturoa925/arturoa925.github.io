@@ -3,7 +3,7 @@ image: https://arturoa925.github.io/images/og.png
 layout: ProjectPage
 thumb: /images/projects/drift/sunset.jpg
 order: 4
-platform: iOS, in progress
+platform: iOS, paused
 date: 2026-10-13
 subtitle: A street-level map experience that reacts to the weather, the time of day and how you're moving.
 stack: Swift, SwiftUI Canvas, Core Location, CoreMotion, Open-Meteo, OpenStreetMap
@@ -16,7 +16,7 @@ tags: iOS, Swift, Design
 
 - A map that's meant to be **experienced, not read**: a full-screen gradient that shifts with weather and time of day, over a street-level world drawn in a SwiftUI `Canvas`.
 - My first app built **entirely by prompting AI**. I owned the concept, the design system, the build order and every review; the AI wrote the implementation.
-- In progress. The theme engine, sensors, weather and street-level renderer work. Onboarding, settings and the floating controls are next.
+- Paused for now. The theme engine, sensors, weather and street-level renderer work. Onboarding, settings and the floating controls are what's left.
 
 <div class="shots">
 <figure><img src="/images/projects/drift/sunny.jpg" width="600" height="1304" loading="lazy" alt="Midday in San Francisco"><figcaption>Midday in San Francisco</figcaption></figure>
@@ -65,4 +65,4 @@ Real roads and building footprints come from OpenStreetMap through the Overpass 
 
 ## What's next
 
-Onboarding with contextual permission requests, settings, the floating weather and speed pills, place search, a fading movement trail, and later an Apple Watch face over the same live gradient.
+When I pick it back up: onboarding with contextual permission requests, settings, the floating weather and speed pills, place search, a fading movement trail, and later an Apple Watch face over the same live gradient.

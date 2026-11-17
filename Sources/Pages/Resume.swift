@@ -57,7 +57,7 @@ struct Resume: StaticPage {
             ]
         ),
         ResumeEntry(
-            title: "Drift (in progress)",
+            title: "Drift (paused)",
             detail: "Street-level map experience · SwiftUI Canvas, Core Location, CoreMotion",
             dates: "github.com/arturoa925/Drift",
             bullets: [

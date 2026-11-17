@@ -44,4 +44,4 @@ Real roads and building footprints come from OpenStreetMap through the Overpass 
 
 Every decision answers the same question: does this make the world feel alive, or does it make the screen feel busy? Color carries the mood, motion carries the life, and everything else gets out of the way.
 
-Drift is still in progress. Onboarding, settings and the floating controls are next. For the architecture and how I built it, read the [Drift case study](/projects/drift), or browse the code on [GitHub](https://github.com/arturoa925/Drift).
+Drift is paused for now. Onboarding, settings and the floating controls are what's left. For the architecture and how I built it, read the [Drift case study](/projects/drift), or browse the code on [GitHub](https://github.com/arturoa925/Drift).
