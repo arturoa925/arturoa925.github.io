@@ -134,7 +134,83 @@
         }
     }
 
-    // ── 7. A thin progress line while reading a post ──
+    // ── 7. Hover a post in the log to preview it: opening line, outline, reading time ──
+    var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var previewRows = document.querySelectorAll(".log .entry[data-preview]");
+    if (canHover && previewRows.length) {
+        var card = document.createElement("div");
+        card.className = "peek";
+        card.setAttribute("aria-hidden", "true");
+        card.innerHTML = '<p class="peek-lead"></p><ol class="peek-outline"></ol><p class="peek-time"></p>';
+        document.body.appendChild(card);
+        var showTimer = null, hideTimer = null, current = null;
+
+        function fill(row) {
+            card.querySelector(".peek-lead").textContent = row.dataset.preview;
+            var list = card.querySelector(".peek-outline");
+            list.innerHTML = "";
+            (row.dataset.outline || "").split("|").filter(Boolean).forEach(function (h) {
+                var li = document.createElement("li");
+                li.textContent = h;
+                list.appendChild(li);
+            });
+            card.querySelector(".peek-time").textContent = row.dataset.minutes || "";
+        }
+
+        function place(row) {
+            var box = row.getBoundingClientRect();
+            var width = 300, gap = 28;
+            var roomRight = window.innerWidth - box.right - gap;
+            var left, top;
+            if (roomRight >= width + 16) {
+                left = box.right + gap;
+                top = box.top;
+            } else {
+                left = Math.max(16, Math.min(box.left + 120, window.innerWidth - width - 16));
+                top = box.bottom + 8;
+            }
+            card.style.left = left + "px";
+            card.style.top = (top + window.scrollY) + "px";
+            // Keep it on screen at the bottom of the window.
+            var cardHeight = card.offsetHeight;
+            if (top + cardHeight > window.innerHeight - 16) {
+                card.style.top = (window.scrollY + Math.max(16, window.innerHeight - cardHeight - 16)) + "px";
+            }
+        }
+
+        function show(row) {
+            clearTimeout(hideTimer);
+            clearTimeout(showTimer);
+            showTimer = setTimeout(function () {
+                current = row;
+                fill(row);
+                place(row);
+                card.classList.add("is-open");
+            }, current ? 0 : 220);
+        }
+
+        function hide() {
+            clearTimeout(showTimer);
+            hideTimer = setTimeout(function () {
+                card.classList.remove("is-open");
+                current = null;
+            }, 120);
+        }
+
+        previewRows.forEach(function (row) {
+            row.addEventListener("mouseenter", function () { show(row); });
+            row.addEventListener("mouseleave", hide);
+            var link = row.querySelector("a");
+            if (link) {
+                link.addEventListener("focus", function () { show(row); });
+                link.addEventListener("blur", hide);
+            }
+        });
+        window.addEventListener("scroll", function () { if (current) place(current); }, { passive: true });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });
+    }
+
+    // ── 8. A thin progress line while reading a post ──
     var prose = document.querySelector(".article-head ~ .prose");
     if (prose) {
         var line = document.createElement("div");

@@ -29,6 +29,37 @@ extension Article {
         (metadata["description"] as? String) ?? description
     }
 
+    /// Plain text of every element with this tag in the post body, in order.
+    private func plainTexts(of tag: String) -> [String] {
+        var found: [String] = []
+        var rest = Substring(text)
+        while let open = rest.range(of: "<\(tag)"),
+              let start = rest.range(of: ">", range: open.upperBound..<rest.endIndex),
+              let close = rest.range(of: "</\(tag)>", range: start.upperBound..<rest.endIndex) {
+            let plain = rest[start.upperBound..<close.lowerBound]
+                .replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            if !plain.isEmpty { found.append(plain) }
+            rest = rest[close.upperBound...]
+        }
+        return found
+    }
+
+    /// The post's opening paragraph for the hover preview. One that leads into
+    /// a list ends in a colon, so it trails off instead.
+    var excerpt: String {
+        var line = plainTexts(of: "p").first ?? ""
+        if line.hasSuffix(":") { line = String(line.dropLast()) + "…" }
+        guard line.count > 200 else { return line }
+        let cut = line.prefix(200)
+        return (cut.range(of: " ", options: .backwards).map { String(cut[..<$0.lowerBound]) } ?? String(cut)) + "…"
+    }
+
+    /// The post's section headings, shown as an outline in the hover preview.
+    var outline: [String] {
+        Array(plainTexts(of: "h2").prefix(5))
+    }
+
     var displayDate: String {
         date.formatted(.dateTime.month(.abbreviated).day().year())
     }
@@ -93,6 +124,8 @@ struct PostRow: HTML {
                 .class("entry-summary")
         }
         .class("entry")
-        .attribute("data-tags", (post.tags ?? []).joined(separator: ","))
+        .attribute("data-preview", post.excerpt)
+        .attribute("data-minutes", "\(post.estimatedReadingMinutes) min read")
+        .attribute("data-outline", post.outline.joined(separator: "|"))
     }
 }
