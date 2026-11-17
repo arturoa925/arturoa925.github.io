@@ -68,7 +68,7 @@ App Intents (Siri) ──────┼──► one SwiftData store (App Group
 Notification action ─────┘
 ```
 
-If I had started in Xcode, I would have built the feature for the app first and found the notification problem much later.
+I never start in Xcode, or any editor. Every project starts in Figma: wireframes and skeleton mockups first, then real design drafts. I only open an IDE once the data design and the visuals are done.
 
 ## How I run the check
 
