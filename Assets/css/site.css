@@ -518,3 +518,8 @@ html, body.container { overflow-x: clip; }
 @media (prefers-color-scheme: dark) { .hero .lead { color: #C9CCD3; } }
 .hero .btn-outline-secondary, .hero .actions a:not(:first-child) { background: rgba(252, 252, 253, 0.6); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
 @media (prefers-color-scheme: dark) { .hero .btn-outline-secondary, .hero .actions a:not(:first-child) { background: rgba(21, 23, 28, 0.45); } }
+
+/* ── Text phases in: a soft focus pull while rising into place (set up by site.js; nothing hides without JS) ── */
+[data-reveal] .reveal { transition-property: opacity, transform, filter; transition-duration: 0.8s; transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1); }
+[data-reveal] .reveal:not(.revealed) { opacity: 0; filter: blur(5px); transform: translateY(12px); }
+@media (prefers-reduced-motion: reduce) { [data-reveal] .reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; } }

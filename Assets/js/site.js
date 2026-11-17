@@ -1,6 +1,38 @@
 (function () {
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // ── 0. Text phases in as it loads and as you scroll to it ──
+    // Each block comes into focus while rising slightly into place.
+    if (!reduceMotion && "IntersectionObserver" in window) {
+        var targets = document.querySelectorAll(
+            ".hero h1, .hero .lead, .hero .actions, .page-head > *, .article-head > *, .section-title, " +
+            ".row-list > .entry, .prose > *, .about-section, .portrait, .shots figure"
+        );
+        document.documentElement.setAttribute("data-reveal", "");
+        var batch = [], flushTimer = null;
+        function flush() {
+            batch.forEach(function (el, i) {
+                el.style.transitionDelay = Math.min(i * 70, 420) + "ms";
+                el.classList.add("revealed");
+            });
+            batch = [];
+        }
+        var revealer = new IntersectionObserver(function (items) {
+            items.forEach(function (item) {
+                if (!item.isIntersecting) return;
+                revealer.unobserve(item.target);
+                batch.push(item.target);
+            });
+            clearTimeout(flushTimer);
+            flushTimer = setTimeout(flush, 16);
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.01 });
+        targets.forEach(function (el) { el.classList.add("reveal"); revealer.observe(el); });
+        // Clear the delay once shown so hover effects stay instant.
+        document.addEventListener("transitionend", function (e) {
+            if (e.target.classList && e.target.classList.contains("revealed")) e.target.style.transitionDelay = "";
+        });
+    }
+
     // ── 1. The headline types itself out. Click it to watch it again. ──
     var headline = document.querySelector(".hero h1");
     if (headline) {
