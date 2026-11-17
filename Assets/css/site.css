@@ -461,7 +461,7 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
 .row-list.log { border-top: 0; position: relative; }
 .row-list.log::before { content: ""; position: absolute; left: 112px; top: 0; bottom: 0; width: 1px; background: var(--hairline); }
 .log .entry { grid-template-columns: 112px 1fr; column-gap: 28px; border-bottom: 0; padding: 18px 0; position: relative; }
-.log .entry::after { content: ""; position: absolute; left: 108px; top: 27px; width: 9px; height: 9px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--mist); transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s ease; }
+.log .entry::after { content: ""; position: absolute; left: 108px; top: 27px; width: 9px; height: 9px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--mist); transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.15s ease-out; }
 .log .entry.seen::after { background: var(--swift); border-color: var(--swift); }
 .log .entry:hover::after { transform: scale(1.35); }
 .log .entry .entry-side { grid-column: 1; grid-row: 1 / span 2; font-family: var(--mono); font-size: 0.8rem; padding-top: 4px; text-align: left; }
