@@ -18,6 +18,12 @@ tags: Full-stack
 - After the first sign-in, the client **keeps working offline**: completed workouts and food logs land on the device first and sync when the connection comes back.
 - The API handles email, Google and GitHub sign-in, program enrollment, a per-user calendar, and AI-generated workouts. Code: [client](https://github.com/arturoa925/FITNESS-client) and [server](https://github.com/arturoa925/FITNESS-server).
 
+<div class="shots">
+<figure><img src="/images/projects/fitness/welcome.jpg" width="414" height="896" loading="lazy" alt="Sign in"><figcaption>Sign in</figcaption></figure>
+<figure><img src="/images/projects/fitness/register.jpg" width="414" height="896" loading="lazy" alt="Creating a profile"><figcaption>Creating a profile</figcaption></figure>
+<figure><img src="/images/projects/fitness/home.jpg" width="414" height="896" loading="lazy" alt="Today's training"><figcaption>Today's training</figcaption></figure>
+</div>
+
 ## What it does
 
 - **Programs:** browse a catalog (half marathon prep, hypertrophy split, kettlebells, yoga, calisthenics), enroll, and walk through it day by day.

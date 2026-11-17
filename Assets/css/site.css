@@ -405,3 +405,13 @@ pre:hover .copy-code, .copy-code:focus-visible { opacity: 1; }
     .loop-arrow::after { right: -3px; top: auto; bottom: 0; transform: rotate(135deg); }
     .sticky { width: auto; min-height: 0; }
 }
+
+/* ── App screenshots in case studies ────────────────────────── */
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 1.75rem 0 2.25rem; }
+.shots figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.shots img { width: 100%; height: auto; display: block; border-radius: 22px; border: 1px solid var(--hairline); background: var(--wash); }
+.shots figcaption { font-size: 0.82rem; color: var(--graphite); text-align: center; }
+@media (max-width: 640px) {
+    .shots { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 6px; margin-right: -20px; padding-right: 20px; }
+    .shots figure { flex: 0 0 62%; scroll-snap-align: start; }
+}

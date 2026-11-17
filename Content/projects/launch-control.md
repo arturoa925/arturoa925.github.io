@@ -17,6 +17,12 @@ tags: iOS, Swift
 - Siri, Shortcuts and notification actions all read and write **one shared SwiftData store**, so a change from anywhere shows up everywhere.
 - Swift 6 strict concurrency, self-healing persistence, full VoiceOver support, and unit plus UI tests.
 
+<div class="shots">
+<figure><picture><source srcset="/images/projects/launch-control/protocol-dark.jpg" media="(prefers-color-scheme: dark)"><img src="/images/projects/launch-control/protocol.jpg" width="600" height="1304" loading="lazy" alt="Today's events and streak"></picture><figcaption>Today's events and streak</figcaption></figure>
+<figure><picture><source srcset="/images/projects/launch-control/weekly-dark.jpg" media="(prefers-color-scheme: dark)"><img src="/images/projects/launch-control/weekly.jpg" width="600" height="1304" loading="lazy" alt="Progress this week"></picture><figcaption>Progress this week</figcaption></figure>
+<figure><picture><source srcset="/images/projects/launch-control/monthly-dark.jpg" media="(prefers-color-scheme: dark)"><img src="/images/projects/launch-control/monthly.jpg" width="600" height="1304" loading="lazy" alt="The last four weeks"></picture><figcaption>The last four weeks</figcaption></figure>
+</div>
+
 ## What it does
 
 The app is a vertical pager with three screens:

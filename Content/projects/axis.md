@@ -17,6 +17,12 @@ tags: iOS, watchOS, Swift
 - The sync sends only small `Codable` payloads, and each direction uses the WatchConnectivity transport that fits its job.
 - About 100 Swift Testing tests across the iPhone and Watch targets.
 
+<div class="shots">
+<figure><img src="/images/projects/axis/builder.jpg" width="600" height="1304" loading="lazy" alt="Building a routine, filtered by equipment"><figcaption>Building a routine, filtered by equipment</figcaption></figure>
+<figure><img src="/images/projects/axis/routines.jpg" width="600" height="1304" loading="lazy" alt="Saved routines"><figcaption>Saved routines</figcaption></figure>
+<figure><img src="/images/projects/axis/editor.jpg" width="600" height="1304" loading="lazy" alt="Editing a routine"><figcaption>Editing a routine</figcaption></figure>
+</div>
+
 ## What it does
 
 1. **Plan on iPhone.** Build a routine from a library of 141 exercises, filter by equipment, and set target sets and reps.

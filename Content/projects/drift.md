@@ -17,6 +17,12 @@ tags: iOS, Swift, Design
 - My first app built **entirely by prompting AI**. I owned the concept, the design system, the build order and every review; the AI wrote the implementation.
 - In progress. The theme engine, sensors, weather and street-level renderer work. Onboarding, settings and the floating controls are next.
 
+<div class="shots">
+<figure><img src="/images/projects/drift/sunny.jpg" width="600" height="1304" loading="lazy" alt="Midday in San Francisco"><figcaption>Midday in San Francisco</figcaption></figure>
+<figure><img src="/images/projects/drift/sunset.jpg" width="600" height="1304" loading="lazy" alt="Sunset at street level"><figcaption>Sunset at street level</figcaption></figure>
+<figure><img src="/images/projects/drift/street.jpg" width="600" height="1304" loading="lazy" alt="Buildings drawn in a Canvas"><figcaption>Buildings drawn in a Canvas</figcaption></figure>
+</div>
+
 ## How I built it
 
 In Launch Control and Axis, I wrote the code myself and used AI for specific jobs like tests and debugging. With Drift, I wanted to see how far I could get by **directing instead of typing**.
