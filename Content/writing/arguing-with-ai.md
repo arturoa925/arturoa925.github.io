@@ -32,6 +32,27 @@ Neither change would have happened if I'd accepted the first output.
 - **Verify on device.** Generated code that compiles isn't the same as code that works. The simulator and a real phone don't always agree.
 - **Use it to understand, not to skip understanding.** My best sessions are rabbit holes like "walk me through why Swift 6 flags this as a data race." I come out knowing something, not just having something.
 
+## Use it to see the project from other angles
+
+Whoever builds an app is its worst tester. You know where every button is and what every screen expects, so you use it the one way it was designed to be used.
+
+AI is good at being someone else. I ask it to look at a feature from a perspective I don't naturally have:
+
+- **The edge-case hunter.** "What inputs break this?" Empty lists, zero, very large numbers, midnight, a time zone change, a day with no data, no network.
+- **The user who makes mistakes.** "Walk through this screen as someone who taps the wrong thing." A double tap, backing out halfway through a save, a typo in a name, deleting something by accident.
+- **The human, not the ideal user.** People get interrupted, switch apps mid-task, skip onboarding, come back days later, and use larger text or VoiceOver.
+
+A prompt can be as simple as:
+
+```text
+Here's the flow for creating a routine. Act as three users:
+someone in a hurry, someone who makes mistakes, and someone
+using VoiceOver. For each, list what could go wrong and what
+they'd expect to happen instead.
+```
+
+This is still arguing, not accepting. The AI will give me a long list, and not every item is real. I check each one against the code and against how the app is actually used. The ones that hold up become a test case or a design change. The rest I can explain why I'm skipping, which is its own kind of understanding.
+
 ## The risk
 
 If you only accept answers, you stop building judgment, and judgment is exactly what makes the AI useful. Arguing with it is how I keep learning while still moving fast.
