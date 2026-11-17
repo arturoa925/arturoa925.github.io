@@ -39,7 +39,7 @@ struct About: StaticPage {
         ("Data structures and algorithms", "Working through the NeetCode 150 in Swift, and again in TypeScript, tracing each problem by hand before I write code."),
         ("Computer science", "Going through Stanford's free CS course materials in order, from the foundations up."),
         ("System design", "Practicing how to break a large system into parts and reason about the trade-offs between them."),
-        ("Reading", "Technical books alongside the courses."),
+        ("Reading", "Computer science books I pick from [FreeComputerBooks](https://freecomputerbooks.com/compscCategory.html), whichever topic catches my interest."),
         ("Apple platforms", "Digging into how Apple's systems work under the hood, like iCloud, Face ID and Continuity, because it changes how I design apps on top of them.")
     ]
 
@@ -50,9 +50,11 @@ struct About: StaticPage {
     ]
 
     private let background = [
-        LogLine(when: "2026", title: "Technical Specialist, Apple",
+        LogLine(when: "2026 to now", title: "Technical Specialist, Apple",
                 detail: "Diagnose hardware and software issues across iPhone, iPad and Apple Watch."),
-        LogLine(when: "2025", title: "Product Specialist, Apple",
+        LogLine(when: "2025 to now", title: "Independent iOS developer",
+                detail: "Design, build and test iOS, watchOS and full-stack apps end to end, from Figma to architecture to tests."),
+        LogLine(when: "2025 to 2026", title: "Product Specialist, Apple",
                 detail: "Promoted to Technical Specialist within five months."),
         LogLine(when: "2025", title: "Meta iOS Developer Professional Certificate", detail: nil),
         LogLine(when: "2024", title: "UC Berkeley Full Stack Web Development Bootcamp", detail: nil)
@@ -136,7 +138,7 @@ struct About: StaticPage {
                     Section {
                         Text(item.0)
                             .class("about-label")
-                        Text(item.1)
+                        Text(markdown: item.1)
                             .class("about-value")
                     }
                     .class("about-row")
