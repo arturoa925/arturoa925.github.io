@@ -9,6 +9,16 @@ description: Rewrite the problem in plain words and circle the verbs. They usual
 
 Before I write a line of code, I rewrite the problem in plain words and **circle the verbs**. The verbs usually point straight at the structure I need.
 
+<figure class="board verbs" aria-label="A problem statement with the verbs count and top k circled, each pointing to the data structure it suggests">
+<p class="board-title">problem statement</p>
+<p class="wire statement">Given a list of words, <span class="circled">count</span> how many times each one appears and return the <span class="circled">top k</span> most frequent.</p>
+<div class="verb-map">
+<div class="verb-col"><span class="down-arrow" aria-hidden="true"></span><div class="wire loop-box"><strong>dictionary of counts</strong><span><code>[String: Int]</code>, one pass, O(n)</span></div></div>
+<div class="verb-col"><span class="down-arrow" aria-hidden="true"></span><div class="wire loop-box"><strong>heap of size k</strong><span>keep only the best k, O(n log k)</span></div><ul class="sticky"><li>only need the best few? don't sort everything</li></ul></div>
+</div>
+<figcaption>Two verbs, two structures. The dictionary answers "how many," the heap answers "which are the top k."</figcaption>
+</figure>
+
 Here's my cheat sheet, with what each looks like in Swift.
 
 ## "Find" / "have I seen this?" → Set or Dictionary
